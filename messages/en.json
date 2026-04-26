@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Dynamic Companion",
+    "tagline": "An instrument for hearing yourself."
+  },
+  "nav": {
+    "practice": "Practice",
+    "weflection": "We-Flection",
+    "library": "Library",
+    "settings": "Settings"
+  },
+  "onboarding": {
+    "title": "Choose your companion",
+    "intro": "Two voices. Pick one and stay with it. You can change later.",
+    "languageLabel": "Language",
+    "continue": "Begin"
+  },
+  "practice": {
+    "title": "Today",
+    "subtitle": "Four questions. Answer one, several, or all.",
+    "skip": "Skip",
+    "send": "Send",
+    "voicePlaceholder": "Speak or type",
+    "endChoice": {
+      "end": "End the practice here",
+      "card": "Read a learning card on what came up",
+      "weflection": "Move into a We-Flection on something that surfaced"
+    },
+    "questions": {
+      "body": "What is felt in the body right now?",
+      "dream": "What dream came in the night? Or what waking dream — what daydream, image, persistent picture.",
+      "edge": "Where is the edge right now? What is at the threshold of your identified self — what wants to be lived but isn't quite yet.",
+      "flirt": "What flirted today? What caught your eye, your ear, your attention without explanation."
+    }
+  },
+  "weflection": {
+    "title": "We-Flection",
+    "start": "Start a We-Flection",
+    "carryOver": {
+      "heading": "From last time, this was still open",
+      "startFresh": "Start fresh",
+      "continueHere": "Continue here"
+    },
+    "charts": {
+      "solution": "Solutions",
+      "concern": "Concerns",
+      "data": "Data",
+      "problem_statement": "Problem-Statements"
+    },
+    "harvest": {
+      "ofCourses": "Of Courses",
+      "openThreads": "Open Threads"
+    },
+    "send": "Speak",
+    "endSession": "End"
+  },
+  "library": {
+    "title": "Library",
+    "intro": "Cards are pulled, never pushed."
+  },
+  "safety": {
+    "heading": "Something deep is asking for attention",
+    "linksHeading": "If a person in the room would help"
+  }
+}

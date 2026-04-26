@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg: theme(colors.ground.50);
+    --ink: theme(colors.ink.DEFAULT);
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: theme(fontFamily.sans);
+    font-feature-settings: "ss01", "kern";
+  }
+
+  /* The user's own words: humanist serif, slightly larger leading. */
+  .user-words {
+    font-family: theme(fontFamily.serif);
+    line-height: 1.55;
+  }
+}
+
+@layer components {
+  .presence-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: theme(colors.ground.500);
+    animation: theme(animation.breath);
+  }
+
+  /* Edge-marker entries render with slightly heavier weight + a thin
+     marginal line. Visible enough that the user can notice on
+     re-reading, never highlighted in a way that draws attention. */
+  .edge-marker {
+    font-weight: 500;
+    border-left: 1px solid theme(colors.ground.400);
+    padding-left: 0.75rem;
+  }
+
+  .chart-entry {
+    @apply user-words text-[15px] leading-relaxed text-ink;
+    animation: theme(animation.rise);
+  }
+
+  .chart-entry-grayed {
+    @apply text-ink-muted;
+  }
+}

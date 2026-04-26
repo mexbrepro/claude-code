@@ -1,0 +1,65 @@
+{
+  "app": {
+    "name": "Dynamic Companion",
+    "tagline": "Ein Instrument, um sich selbst zu hören."
+  },
+  "nav": {
+    "practice": "Praxis",
+    "weflection": "We-Flection",
+    "library": "Bibliothek",
+    "settings": "Einstellungen"
+  },
+  "onboarding": {
+    "title": "Wähle deine Begleitung",
+    "intro": "Zwei Stimmen. Wähle eine und bleibe dabei. Du kannst später wechseln.",
+    "languageLabel": "Sprache",
+    "continue": "Beginnen"
+  },
+  "practice": {
+    "title": "Heute",
+    "subtitle": "Vier Fragen. Beantworte eine, mehrere oder alle.",
+    "skip": "Überspringen",
+    "send": "Senden",
+    "voicePlaceholder": "Sprechen oder tippen",
+    "endChoice": {
+      "end": "Praxis hier beenden",
+      "card": "Eine Lernkarte zu dem lesen, was aufkam",
+      "weflection": "Mit einer We-Flection vertiefen"
+    },
+    "questions": {
+      "body": "Was ist gerade im Körper spürbar?",
+      "dream": "Welcher Traum kam in der Nacht? Oder welcher Wachtraum — welches Tagbild, welches Bild, das bleibt.",
+      "edge": "Wo ist gerade die Kante? Was steht an der Schwelle deines Selbst — was möchte gelebt werden, ist es aber noch nicht ganz.",
+      "flirt": "Was hat dich heute angeflirtet? Was hat dein Auge, dein Ohr, deine Aufmerksamkeit ohne Erklärung gefangen."
+    }
+  },
+  "weflection": {
+    "title": "We-Flection",
+    "start": "Eine We-Flection beginnen",
+    "carryOver": {
+      "heading": "Vom letzten Mal ist das offen geblieben",
+      "startFresh": "Neu beginnen",
+      "continueHere": "Hier weitermachen"
+    },
+    "charts": {
+      "solution": "Lösungen",
+      "concern": "Anliegen",
+      "data": "Daten",
+      "problem_statement": "Problemstellungen"
+    },
+    "harvest": {
+      "ofCourses": "Selbstverständlich",
+      "openThreads": "Offen geblieben"
+    },
+    "send": "Sprechen",
+    "endSession": "Beenden"
+  },
+  "library": {
+    "title": "Bibliothek",
+    "intro": "Karten werden gezogen, nie aufgedrängt."
+  },
+  "safety": {
+    "heading": "Etwas Tiefes meldet sich",
+    "linksHeading": "Wenn ein Mensch im Raum helfen würde"
+  }
+}
