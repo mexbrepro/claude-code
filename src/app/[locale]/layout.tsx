@@ -56,11 +56,18 @@ function Nav({ locale }: { locale: string }) {
       <NavLink href={`/${locale}/practice`} k="practice" />
       <NavLink href={`/${locale}/weflection`} k="weflection" />
       <NavLink href={`/${locale}/library`} k="library" />
+      <NavLink href={`/${locale}/settings`} k="settings" />
     </nav>
   );
 }
 
-function NavLink({ href, k }: { href: string; k: "practice" | "weflection" | "library" }) {
+function NavLink({
+  href,
+  k,
+}: {
+  href: string;
+  k: "practice" | "weflection" | "library" | "settings";
+}) {
   const t = useTranslations("nav");
   return (
     <Link href={href} className="hover:text-ink transition-colors">

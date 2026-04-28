@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
 import { getCardBySlug, LEARNING_CARDS } from "@/lib/content/learning-cards";
+import { CardReadTracker } from "@/components/CardReadTracker";
 
 export function generateStaticParams() {
   return LEARNING_CARDS.flatMap((card) =>
@@ -21,6 +22,7 @@ export default async function CardPage({
   const lang = locale === "de" ? "de" : "en";
   return (
     <article className="flex flex-col gap-6">
+      <CardReadTracker cardId={card.id} />
       <Link href={`/${locale}/library`} className="text-xs text-ink-muted hover:text-ink">
         ←
       </Link>
