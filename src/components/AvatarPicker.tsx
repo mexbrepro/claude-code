@@ -45,10 +45,18 @@ export function AvatarPicker({ locale }: { locale: string }) {
   const [picked, setPicked] = useState<string | null>(null);
   const lang = locale === "de" ? "de" : "en";
 
-  function commit() {
+  async function commit() {
     if (!picked) return;
     document.cookie = `dc_avatar=${picked}; path=/; max-age=31536000; samesite=lax`;
     document.cookie = `dc_locale=${locale}; path=/; max-age=31536000; samesite=lax`;
+    // Best-effort persistence; gate falls back to the cookie when DB is absent.
+    await fetch("/api/settings", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ avatar: picked, language: locale }),
+    }).catch(() => {
+      /* silent */
+    });
     router.push(`/${locale}/practice`);
   }
 

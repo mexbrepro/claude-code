@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ChartColumn, type ChartEntryView, type ChartType } from "./ChartColumn";
 import { PresenceDot } from "./PresenceDot";
+import { VoiceButton } from "./VoiceButton";
+import { SpeakButton } from "./SpeakButton";
 
 type ClassifiedTurn = {
   chart: ChartType;
@@ -227,7 +229,10 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
       <header>
         <h1 className="user-words text-2xl text-ink">{t("title")}</h1>
         {opener && phase === "active" && (
-          <p className="user-words mt-3 text-lg text-ink">{opener}</p>
+          <div className="mt-3 flex items-start gap-2">
+            <p className="user-words flex-1 text-lg text-ink">{opener}</p>
+            <SpeakButton text={opener} className="mt-1" />
+          </div>
         )}
       </header>
 
@@ -247,7 +252,12 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
           </div>
 
           {verbalResponse && (
-            <p className="user-words text-[15px] text-ink-muted">{verbalResponse}</p>
+            <div className="flex items-start gap-2">
+              <p className="user-words flex-1 text-[15px] text-ink-muted">
+                {verbalResponse}
+              </p>
+              <SpeakButton text={verbalResponse} />
+            </div>
           )}
 
           <div className="flex flex-col gap-3 border-t border-ground-200 pt-4">
@@ -267,6 +277,13 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
               >
                 {t("send")}
               </button>
+              <VoiceButton
+                locale={locale}
+                disabled={pending}
+                onTranscript={(text) =>
+                  setDraft((d) => (d ? `${d} ${text}` : text))
+                }
+              />
               {turns.length > 0 && (
                 <button
                   onClick={startHarvest}

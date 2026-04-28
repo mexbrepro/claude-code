@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { getAvatarChoice } from "@/lib/auth/user";
 
 export default async function LocaleHome({
   params,
@@ -9,6 +11,8 @@ export default async function LocaleHome({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const avatar = await getAvatarChoice();
+  if (!avatar) redirect(`/${locale}/onboarding`);
   return <Landing locale={locale} />;
 }
 

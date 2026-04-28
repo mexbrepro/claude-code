@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { db, schema } from "@/lib/db/client";
 
 const ANON_COOKIE = "dc_anon_id";
+const AVATAR_COOKIE = "dc_avatar";
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365 * 5; // 5 years
 
 /**
@@ -42,4 +43,40 @@ export async function getOrCreateUser() {
     .values({ anonymousId })
     .returning({ id: schema.users.id });
   return { anonymousId, userId: created.id };
+}
+
+/**
+ * Resolve the user's chosen avatar. **Read-only** — safe to call from
+ * page renders. Looks up the existing user row when an anonymous-id
+ * cookie is present; never inserts. Falls back to the non-httpOnly
+ * dc_avatar cookie set by the AvatarPicker on client-side commit.
+ *
+ * Next.js 15 forbids cookies().set() during page render, so this path
+ * cannot create the user — that happens lazily when an API route is hit.
+ */
+export async function getAvatarChoice(): Promise<
+  "liss" | "kena" | "anu" | "wer" | null
+> {
+  const jar = await cookies();
+  const cookieValue = jar.get(AVATAR_COOKIE)?.value;
+  const anonymousId = jar.get(ANON_COOKIE)?.value;
+
+  if (db && anonymousId) {
+    const rows = await db
+      .select({ avatar: schema.users.avatarChoice })
+      .from(schema.users)
+      .where(eq(schema.users.anonymousId, anonymousId))
+      .limit(1);
+    if (rows[0]?.avatar) return rows[0].avatar;
+  }
+
+  if (
+    cookieValue === "liss" ||
+    cookieValue === "kena" ||
+    cookieValue === "anu" ||
+    cookieValue === "wer"
+  ) {
+    return cookieValue;
+  }
+  return null;
 }

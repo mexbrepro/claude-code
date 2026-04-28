@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { PresenceDot } from "./PresenceDot";
+import { VoiceButton } from "./VoiceButton";
+import { SpeakButton } from "./SpeakButton";
 import { cn } from "@/lib/utils";
 
 type QuestionKey = "body" | "dream" | "edge" | "flirt";
@@ -119,6 +121,11 @@ export function PracticeLoop({ locale }: { locale: string }) {
             >
               {t("send")}
             </button>
+            <VoiceButton
+              locale={locale}
+              disabled={pending}
+              onTranscript={(text) => setDraft((d) => (d ? `${d} ${text}` : text))}
+            />
             <button
               onClick={skip}
               disabled={pending}
@@ -191,14 +198,20 @@ function PracticeHistoryItem({
         <p className="mt-2 text-sm italic text-ink-muted">—</p>
       )}
       {item.mirror?.mirror && (
-        <p className="user-words mt-3 text-[14px] text-ink-muted">
-          {item.mirror.mirror}
-        </p>
+        <div className="mt-3 flex items-start gap-2">
+          <p className="user-words flex-1 text-[14px] text-ink-muted">
+            {item.mirror.mirror}
+          </p>
+          <SpeakButton text={item.mirror.mirror} />
+        </div>
       )}
       {item.mirror?.followup && (
-        <p className="user-words mt-2 text-[14px] text-ink">
-          {item.mirror.followup}
-        </p>
+        <div className="mt-2 flex items-start gap-2">
+          <p className="user-words flex-1 text-[14px] text-ink">
+            {item.mirror.followup}
+          </p>
+          <SpeakButton text={item.mirror.followup} />
+        </div>
       )}
     </article>
   );
