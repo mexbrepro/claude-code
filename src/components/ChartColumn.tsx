@@ -17,14 +17,26 @@ export function ChartColumn({
   label,
   entries,
   onMove,
+  onBookmark,
 }: {
   type: ChartType;
   label: string;
   entries: ChartEntryView[];
   onMove?: (entryId: string, to: ChartType) => void;
+  onBookmark?: (entryId: string) => void;
 }) {
   return (
-    <section className="flex min-h-[12rem] flex-col gap-3">
+    <section
+      className="flex min-h-[12rem] flex-col gap-3"
+      onDragOver={(ev) => {
+        ev.preventDefault();
+        ev.dataTransfer.dropEffect = "move";
+      }}
+      onDrop={(ev) => {
+        const id = ev.dataTransfer.getData("text/dc-entry");
+        if (id && onMove) onMove(id, type);
+      }}
+    >
       <header className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">
         {label}
       </header>
@@ -32,38 +44,35 @@ export function ChartColumn({
         {entries.map((e) => (
           <li
             key={e.id}
-            draggable
+            draggable={!e.isMigratedFrom}
             onDragStart={(ev) => {
               ev.dataTransfer.setData("text/dc-entry", e.id);
               ev.dataTransfer.effectAllowed = "move";
             }}
-            onDragOver={(ev) => {
-              ev.preventDefault();
-              ev.dataTransfer.dropEffect = "move";
-            }}
             className={cn(
-              "chart-entry",
+              "chart-entry group relative flex items-start gap-2",
               e.edgeMarker && "edge-marker",
               e.isMigratedFrom && "chart-entry-grayed",
               e.bookmarked && "border-l-2 border-ground-400 pl-3",
             )}
           >
-            {e.contentCondensed}
+            <span className="flex-1">{e.contentCondensed}</span>
+            {!e.isMigratedFrom && onBookmark && (
+              <button
+                type="button"
+                aria-label="bookmark"
+                onClick={() => onBookmark(e.id)}
+                className={cn(
+                  "shrink-0 text-ink-muted opacity-0 transition-opacity group-hover:opacity-100",
+                  e.bookmarked && "opacity-100 text-ink",
+                )}
+              >
+                {e.bookmarked ? "•" : "·"}
+              </button>
+            )}
           </li>
         ))}
       </ul>
-      {/* Drop zone covers the column. The ChartBoard owner wires onMove. */}
-      <div
-        className="flex-1"
-        onDragOver={(ev) => {
-          ev.preventDefault();
-          ev.dataTransfer.dropEffect = "move";
-        }}
-        onDrop={(ev) => {
-          const id = ev.dataTransfer.getData("text/dc-entry");
-          if (id && onMove) onMove(id, type);
-        }}
-      />
     </section>
   );
 }

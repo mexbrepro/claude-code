@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { classifyContribution, type PriorTurn } from "@/lib/claude/orchestrator";
+import { eq } from "drizzle-orm";
+import {
+  classifyContribution,
+  type PriorTurn,
+} from "@/lib/claude/orchestrator";
 import { detectStage3, safetyResources } from "@/lib/safety/detect";
+import { pickOpener } from "@/lib/claude/system-prompt";
+import { getOrCreateUser } from "@/lib/auth/user";
+import { db, schema } from "@/lib/db/client";
 
 const PriorEntry = z.object({
   raw: z.string(),
@@ -21,19 +28,45 @@ const Body = z.object({
   locale: z.enum(["en", "de"]),
   contribution: z.string().min(1).max(8000),
   prior: z.array(PriorEntry).max(200),
+  sessionId: z.string().uuid().nullable().optional(),
+  continuedFromSessionId: z.string().uuid().nullable().optional(),
 });
 
 export async function POST(req: Request) {
   const body = Body.parse(await req.json());
+  const { userId } = await getOrCreateUser();
 
   const stage3 = detectStage3(body.contribution);
   if (stage3.length) {
+    if (db && userId) {
+      await db.insert(schema.safetyEvents).values({
+        userId,
+        triggerType: stage3[0].trigger,
+        actionTaken: "presence_mode_with_resources_during_weflection",
+        resourcesOffered: stage3.map((h) => h.trigger),
+      });
+    }
     return NextResponse.json({
       safety: {
         triggers: stage3,
         resources: safetyResources(body.locale),
       },
     });
+  }
+
+  // Resolve or create the WeFlectionSession.
+  let sessionId = body.sessionId ?? null;
+  if (db && userId && !sessionId) {
+    const [created] = await db
+      .insert(schema.weFlectionSessions)
+      .values({
+        userId,
+        openingQuestion: pickOpener(body.locale, []),
+        status: "active",
+        continuedFromSessionId: body.continuedFromSessionId ?? null,
+      })
+      .returning({ id: schema.weFlectionSessions.id });
+    sessionId = created.id;
   }
 
   // Build prior turns as alternating user/assistant pairs so the model
@@ -54,5 +87,68 @@ export async function POST(req: Request) {
     })),
   });
 
-  return NextResponse.json({ classified });
+  // Persist the chart entry.
+  let entryId: string | null = null;
+  if (db && sessionId) {
+    const [row] = await db
+      .insert(schema.chartEntries)
+      .values({
+        sessionId,
+        chartType: classified.chart,
+        contentUserWords: body.contribution,
+        contentCondensed: classified.user_words_condensed,
+        classificationRationaleInternal: classified.rationale_internal,
+        secondaryAspects: classified.secondary_aspects,
+        edgeMarker: classified.edge_marker,
+        userOverrode: false,
+        sequenceInSession: body.prior.length + 1,
+        parentEntryId:
+          classified.is_problem_statement_migration && classified.parent_entry_id
+            ? classified.parent_entry_id
+            : null,
+      })
+      .returning({ id: schema.chartEntries.id });
+    entryId = row.id;
+  }
+
+  return NextResponse.json({ classified, sessionId, entryId });
+}
+
+const MoveBody = z.object({
+  entryId: z.string().uuid(),
+  to: z.enum(["solution", "concern", "data", "problem_statement"]),
+});
+
+// PATCH: silent user-driven reclassification (spec §6.13).
+// The avatar never comments on overrides; we just record them.
+export async function PATCH(req: Request) {
+  const body = MoveBody.parse(await req.json());
+  if (!db) return NextResponse.json({ ok: true });
+  const { userId } = await getOrCreateUser();
+  if (!userId) return NextResponse.json({ ok: true });
+
+  // Confirm the entry belongs to a session owned by this user before mutating.
+  const rows = await db
+    .select({
+      entryId: schema.chartEntries.id,
+      sessionUser: schema.weFlectionSessions.userId,
+    })
+    .from(schema.chartEntries)
+    .innerJoin(
+      schema.weFlectionSessions,
+      eq(schema.chartEntries.sessionId, schema.weFlectionSessions.id),
+    )
+    .where(eq(schema.chartEntries.id, body.entryId))
+    .limit(1);
+
+  if (!rows.length || rows[0].sessionUser !== userId) {
+    return NextResponse.json({ ok: false }, { status: 403 });
+  }
+
+  await db
+    .update(schema.chartEntries)
+    .set({ chartType: body.to, userOverrode: true })
+    .where(eq(schema.chartEntries.id, body.entryId));
+
+  return NextResponse.json({ ok: true });
 }

@@ -19,9 +19,16 @@ type TurnRecord = {
   entryId: string;
   raw: string;
   classified: ClassifiedTurn;
+  bookmarked?: boolean;
 };
 
-type Phase = "active" | "harvesting_of_courses" | "harvesting_open_threads" | "ended";
+type Phase = "carry_over" | "active" | "harvesting_of_courses" | "harvesting_open_threads" | "ended";
+
+type CarryOver = {
+  priorSessionId: string | null;
+  openThreads: { id: string; content: string }[];
+  bookmarks: { id: string; note: string | null; content: string; chart: ChartType }[];
+};
 
 const COLUMN_ORDER: ChartType[] = ["solution", "concern", "data", "problem_statement"];
 
@@ -31,20 +38,32 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
   const [pending, setPending] = useState(false);
   const [opener, setOpener] = useState<string | null>(null);
   const [turns, setTurns] = useState<TurnRecord[]>([]);
-  const [phase, setPhase] = useState<Phase>("active");
+  const [phase, setPhase] = useState<Phase>("carry_over");
   const [ofCourses, setOfCourses] = useState<string[]>([]);
   const [openThreads, setOpenThreads] = useState<string[]>([]);
   const [verbalResponse, setVerbalResponse] = useState<string | null>(null);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [continuedFrom, setContinuedFrom] = useState<string | null>(null);
+  const [carryOver, setCarryOver] = useState<CarryOver | null>(null);
   const [safety, setSafety] = useState<{
     bridgeMessage: string;
     links: { label: string; url: string }[];
   } | null>(null);
 
-  // Open with one of the seven openers.
   useEffect(() => {
     fetch(`/api/weflection/open?locale=${locale}`)
       .then((r) => r.json())
       .then((d) => setOpener(d.opener));
+    fetch(`/api/weflection/carry-over`)
+      .then((r) => r.json())
+      .then((d: CarryOver) => {
+        if (d.openThreads.length || d.bookmarks.length) {
+          setCarryOver(d);
+        } else {
+          setPhase("active");
+        }
+      })
+      .catch(() => setPhase("active"));
   }, [locale]);
 
   function entriesFor(chart: ChartType): ChartEntryView[] {
@@ -52,7 +71,6 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
     for (const t of turns) {
       const c = t.classified;
       if (c.chart !== chart) continue;
-      // Migrations: render the parent grayed first, then the new entry.
       if (c.is_problem_statement_migration && c.parent_entry_id) {
         const parent = turns.find((p) => p.entryId === c.parent_entry_id);
         if (parent && !list.some((e) => e.id === parent.entryId)) {
@@ -68,6 +86,7 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
         id: t.entryId,
         contentCondensed: c.user_words_condensed,
         edgeMarker: c.edge_marker,
+        bookmarked: t.bookmarked,
       });
     }
     return list;
@@ -83,7 +102,13 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
         body: JSON.stringify({
           locale,
           contribution: draft,
-          prior: turns.map((t) => ({ raw: t.raw, classified: t.classified, entryId: t.entryId })),
+          prior: turns.map((t) => ({
+            raw: t.raw,
+            classified: t.classified,
+            entryId: t.entryId,
+          })),
+          sessionId,
+          continuedFromSessionId: continuedFrom,
         }),
       });
       const data = await res.json();
@@ -94,9 +119,11 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
       }
       const classified: ClassifiedTurn = data.classified;
       const entryId =
-        typeof crypto !== "undefined" && "randomUUID" in crypto
+        data.entryId ??
+        (typeof crypto !== "undefined" && "randomUUID" in crypto
           ? crypto.randomUUID()
-          : `${Date.now()}`;
+          : `${Date.now()}`);
+      setSessionId((s) => s ?? data.sessionId ?? null);
       setTurns((prev) => [...prev, { entryId, raw: draft, classified }]);
       setVerbalResponse(classified.verbal_response || null);
       setDraft("");
@@ -105,7 +132,7 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
     }
   }
 
-  function moveEntry(entryId: string, to: ChartType) {
+  async function moveEntry(entryId: string, to: ChartType) {
     setTurns((prev) =>
       prev.map((t) =>
         t.entryId === entryId
@@ -113,6 +140,29 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
           : t,
       ),
     );
+    if (sessionId) {
+      // Best-effort: persist the override silently. The avatar never comments.
+      void fetch("/api/weflection/turn", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ entryId, to }),
+      });
+    }
+  }
+
+  async function bookmark(entryId: string) {
+    setTurns((prev) =>
+      prev.map((t) =>
+        t.entryId === entryId ? { ...t, bookmarked: !t.bookmarked } : t,
+      ),
+    );
+    if (sessionId) {
+      void fetch("/api/weflection/bookmark", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ sessionId, chartEntryId: entryId }),
+      });
+    }
   }
 
   async function startHarvest() {
@@ -128,13 +178,48 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
     setDraft("");
   }
 
-  function nextHarvestPhase() {
-    if (phase === "harvesting_of_courses") setPhase("harvesting_open_threads");
-    else if (phase === "harvesting_open_threads") setPhase("ended");
+  async function nextHarvestPhase() {
+    if (phase === "harvesting_of_courses") {
+      setPhase("harvesting_open_threads");
+    } else if (phase === "harvesting_open_threads") {
+      setPhase("ended");
+      if (sessionId) {
+        await fetch("/api/weflection/end", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ sessionId, ofCourses, openThreads }),
+        });
+      }
+    }
   }
 
   if (safety) {
     return <SafetyPanel resources={safety} />;
+  }
+
+  if (phase === "carry_over" && carryOver) {
+    return (
+      <CarryOverPanel
+        data={carryOver}
+        onStartFresh={() => {
+          setCarryOver(null);
+          setPhase("active");
+        }}
+        onContinueHere={() => {
+          setContinuedFrom(carryOver.priorSessionId);
+          setCarryOver(null);
+          setPhase("active");
+        }}
+      />
+    );
+  }
+
+  if (phase === "carry_over") {
+    return (
+      <section className="flex justify-center pt-12">
+        <PresenceDot active />
+      </section>
+    );
   }
 
   return (
@@ -156,6 +241,7 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
                 label={t(`charts.${c}`)}
                 entries={entriesFor(c)}
                 onMove={moveEntry}
+                onBookmark={bookmark}
               />
             ))}
           </div>
@@ -213,6 +299,54 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
   );
 }
 
+function CarryOverPanel({
+  data,
+  onStartFresh,
+  onContinueHere,
+}: {
+  data: CarryOver;
+  onStartFresh: () => void;
+  onContinueHere: () => void;
+}) {
+  const t = useTranslations("weflection.carryOver");
+  return (
+    <section className="flex flex-col gap-6 pt-6">
+      <h2 className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">
+        {t("heading")}
+      </h2>
+      <ul className="flex flex-col gap-3">
+        {data.openThreads.map((o) => (
+          <li key={o.id} className="user-words text-[15px] text-ink">
+            — {o.content}
+          </li>
+        ))}
+        {data.bookmarks.map((b) => (
+          <li
+            key={b.id}
+            className="user-words border-l border-ground-300 pl-3 text-[15px] text-ink"
+          >
+            — {b.content}
+            {b.note && (
+              <span className="ml-2 text-xs text-ink-muted">({b.note})</span>
+            )}
+          </li>
+        ))}
+      </ul>
+      <div className="flex items-center gap-4 pt-4">
+        <button
+          onClick={onContinueHere}
+          className="rounded-md bg-ground-700 px-4 py-2 text-sm text-ground-50"
+        >
+          {t("continueHere")}
+        </button>
+        <button onClick={onStartFresh} className="text-sm text-ink-muted hover:text-ink">
+          {t("startFresh")}
+        </button>
+      </div>
+    </section>
+  );
+}
+
 function Harvest({
   phase,
   ofCourses,
@@ -230,14 +364,14 @@ function Harvest({
   draft: string;
   setDraft: (v: string) => void;
 }) {
-  const t = useTranslations("weflection.harvest");
+  const tHarvest = useTranslations("weflection.harvest");
   const tFlection = useTranslations("weflection");
   return (
     <section className="flex flex-col gap-6 border-t border-ground-200 pt-6">
       {ofCourses.length > 0 && (
         <div>
           <h2 className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            {t("ofCourses")}
+            {tHarvest("ofCourses")}
           </h2>
           <ul className="mt-3 flex flex-col gap-2">
             {ofCourses.map((c, i) => (
@@ -251,7 +385,7 @@ function Harvest({
       {openThreads.length > 0 && (
         <div>
           <h2 className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">
-            {t("openThreads")}
+            {tHarvest("openThreads")}
           </h2>
           <ul className="mt-3 flex flex-col gap-2">
             {openThreads.map((c, i) => (
@@ -267,8 +401,7 @@ function Harvest({
         <div className="mt-4 flex flex-col gap-3">
           <p className="user-words text-lg text-ink">
             {phase === "harvesting_of_courses"
-              ? // The harvest question itself, rendered for the locale.
-                tFlection("harvest.ofCourses")
+              ? tFlection("harvest.ofCourses")
               : tFlection("harvest.openThreads")}
           </p>
           <textarea
