@@ -333,6 +333,118 @@ export const LEARNING_CARDS: LearningCard[] = [
         "Die innere Kritikerin ist selten eine Saboteurin. Häufiger ist sie die Kantenfigur — der Teil des Selbst, der die Linie hält, wer du sein darfst. Der Ton ist hart, der Inhalt ist konservativ, aber die Funktion ist schützend: sie hat Gründe, oft alte, warum ein Überschreiten der Linie einmal teuer war. Innere Arbeit, die gegen die Kritikerin kämpft, gibt ihr mehr Macht. Innere Arbeit, die der Kritikerin zuhört, entdeckt, wovor sie sich fürchtet — und die Energie, die sie bewachte, wird frei für das, was als Nächstes leben wollte.",
     },
   },
+  {
+    id: "secondary-becomes-primary",
+    slug: "when-secondary-becomes-primary",
+    tags: ["mindell"],
+    related: ["primary-secondary", "edges-edge-figures"],
+    title: {
+      en: "When the Secondary Becomes Primary",
+      de: "Wenn das Sekundäre zum Primären wird",
+    },
+    body: {
+      en:
+        "Process work is often described as 'unfolding the secondary,' but the deeper move is the integration that follows. The voice that was unwelcome — tired, angry, longing — becomes a voice the self can speak from, not just one the self has. The change is rarely dramatic. It looks like a sentence the user could not have said three weeks ago landing without effort. The secondary has become primary; the room is wider; the next secondary is already arriving at the edge.",
+      de:
+        "Prozessarbeit wird oft als „Entfaltung des Sekundären" beschrieben, aber der tiefere Schritt ist die Integration danach. Die Stimme, die nicht willkommen war — die müde, die wütende, die sehnende — wird zu einer, von der das Selbst sprechen kann, nicht nur eine, die das Selbst hat. Die Veränderung ist selten dramatisch. Sie sieht aus wie ein Satz, den die Person vor drei Wochen nicht hätte sagen können, der jetzt mühelos kommt. Das Sekundäre ist primär geworden; der Raum ist weiter; das nächste Sekundäre steht schon an der Kante.",
+    },
+  },
+  {
+    id: "body-symptom-as-dream",
+    slug: "the-body-symptom-as-dream",
+    tags: ["mindell", "dreambody"],
+    related: ["dreambody", "world-channels"],
+    title: {
+      en: "The Body Symptom as Dream",
+      de: "Das körperliche Symptom als Traum",
+    },
+    body: {
+      en:
+        "Mindell asks: what would happen if you treated the symptom the way you treat a dream — not as a problem to solve, but as a figure to listen to? The pulling, the ache, the heaviness has its own posture, its own tone, sometimes its own voice. Working with body symptoms in this register is depth work and belongs in person with a process worker. The app does not lead deeper here; it names the door and points at it.",
+      de:
+        "Mindell fragt: was wäre, wenn du das Symptom so behandelst, wie du einen Traum behandelst — nicht als Problem, das gelöst werden muss, sondern als Figur, der man zuhört? Das Ziehen, der Schmerz, die Schwere haben eine eigene Haltung, einen eigenen Ton, manchmal eine eigene Stimme. Mit körperlichen Symptomen in diesem Register zu arbeiten ist Tiefenarbeit und gehört in die Anwesenheit einer Prozessarbeiterin. Die App führt hier nicht hinein; sie zeigt die Tür und benennt sie.",
+    },
+  },
+  {
+    id: "role-switch",
+    slug: "the-role-switch",
+    tags: ["mindell"],
+    related: ["dreaming-up", "primary-secondary"],
+    title: {
+      en: "The Role Switch",
+      de: "Der Rollenwechsel",
+    },
+    body: {
+      en:
+        "Process work uses 'roles' for the positions in a field — primary, secondary, edge figure, dreambody figure, the absent third. A core move is the role switch: the user speaks for a moment as the figure they have been speaking about. Done in a session, it is fast and bodily. Done inwardly with this app, it is slower and quieter — writing or saying a single sentence as the part of the self that wasn't the one talking. Even one such sentence usually shifts what the next contribution wants to be.",
+      de:
+        "Prozessarbeit nutzt „Rollen" für die Positionen in einem Feld — primär, sekundär, Kantenfigur, Traumkörperfigur, das abwesende Dritte. Ein Kernschritt ist der Rollenwechsel: die Person spricht für einen Moment als die Figur, von der sie eben gesprochen hat. In einer Sitzung ist das schnell und körperlich. Innerlich mit dieser App ist es langsamer und ruhiger — einen Satz schreiben oder sagen, als der Teil des Selbst, der eben nicht der sprechende war. Schon ein solcher Satz verschiebt meist, was der nächste Beitrag werden will.",
+    },
+  },
+  {
+    id: "deep-democracy-eight",
+    slug: "deep-democracy-of-the-eight-questions",
+    tags: ["df"],
+    related: ["what-is-df", "deep-democracy"],
+    title: {
+      en: "The Eight Questions of Dynamic Facilitation",
+      de: "Die acht Fragen der Dynamic Facilitation",
+    },
+    body: {
+      en:
+        "Jim Rough's facilitation has roughly eight kinds of question, and the avatar in this app uses four of them. The full set: 'What more?' (open), 'How could that read as a problem-statement?' (translate concern), 'If you could decide, what would you do?' (release agency), 'Tell me more about that' (concretize), 'Did I get that right?' (mirror), 'Whose voice is that?' (locate), 'What would the other side say?' (welcome the missing), 'Anything else?' (close). The four the app uses are the safest for solo work; the other four belong in a room with a person who can read the body.",
+      de:
+        "Jim Roughs Facilitation kennt grob acht Arten von Fragen, vier davon nutzt der Avatar in dieser App. Die ganze Reihe: „Was noch?" (öffnen), „Wie könnte das als Problemstellung lauten?" (Anliegen übersetzen), „Wenn du entscheiden könntest, was würdest du tun?" (Handlungsmacht freigeben), „Erzähl mir mehr davon" (konkretisieren), „Habe ich das richtig verstanden?" (spiegeln), „Wessen Stimme ist das?" (verorten), „Was würde die andere Seite sagen?" (das Fehlende einladen), „Sonst noch etwas?" (abschließen). Die vier, die die App nutzt, sind die sichersten für Soloarbeit; die anderen vier gehören in einen Raum mit einem Menschen, der den Körper lesen kann.",
+    },
+  },
+  {
+    id: "world-channel-attention",
+    slug: "world-channel-attention",
+    tags: ["mindell", "synchronicity"],
+    related: ["world-channels", "flirts", "synchronicity"],
+    title: {
+      en: "World Channel — When the Outside Is Speaking",
+      de: "Weltkanal — wenn das Außen mitredet",
+    },
+    body: {
+      en:
+        "Sometimes the most precise information about an inner moment arrives through the world channel: the bird that lands at the window when the question hangs, the song on the radio that finishes a sentence the user couldn't, the chance encounter that says the unspeakable thing. World channel signals are not interpretations to be decoded. They are flirts at a different scale. The app's job here is to notice the user has noticed, and to let it be.",
+      de:
+        "Manchmal kommt die genaueste Information über einen inneren Moment über den Weltkanal: der Vogel am Fenster, wenn die Frage in der Luft hängt, das Lied im Radio, das einen Satz vollendet, den die Person nicht aussprechen konnte, die zufällige Begegnung, die das Unaussprechliche sagt. Weltkanal-Signale sind keine Botschaften zum Entschlüsseln. Sie sind Flirts in einem anderen Maßstab. Aufgabe der App ist hier, zu bemerken, dass die Person bemerkt hat — und es bestehen zu lassen.",
+    },
+  },
+  {
+    id: "the-big-you",
+    slug: "the-big-you",
+    tags: ["mindell", "essence"],
+    related: ["process-mind", "essence"],
+    title: {
+      en: "The Big You",
+      de: "Das große Du",
+    },
+    body: {
+      en:
+        "Mindell sometimes points at a larger self underneath the parts — the 'big you' — that holds the small selves the way the sky holds weather. It is not a doctrine. It is a noticeable change of register, a sense of being held by something one is also part of. The big you is not louder than the parts; it is the medium in which the parts can be heard. When inner work touches it, the parts often quiet on their own.",
+      de:
+        "Mindell zeigt manchmal auf ein größeres Selbst unter den Teilen — das „große Du" — das die kleinen Selbste hält, wie der Himmel das Wetter hält. Es ist keine Lehre. Es ist eine spürbare Verschiebung des Registers, ein Gefühl, gehalten zu sein von etwas, dem man auch angehört. Das große Du ist nicht lauter als die Teile; es ist das Medium, in dem die Teile hörbar werden. Wenn innere Arbeit es berührt, werden die Teile oft von selbst leiser.",
+    },
+  },
+  {
+    id: "inner-facilitator",
+    slug: "the-inner-facilitator",
+    tags: ["df", "gilligan"],
+    related: ["generative-trance", "what-is-df"],
+    title: {
+      en: "The Inner Facilitator",
+      de: "Die innere Begleitung",
+    },
+    body: {
+      en:
+        "We-Flection trains a small, quiet stance: the user as the facilitator of their own inner room. The stance is not detached and not in charge. It is an attentive companion who can hear all the voices without choosing one. With practice this stance becomes available outside the app — at the kitchen table, in the meeting, in the difficult conversation. The app does not teach the stance. It rehearses it.",
+      de:
+        "We-Flection übt eine kleine, ruhige Haltung ein: die Person als Begleitung des eigenen inneren Raumes. Die Haltung ist nicht distanziert und nicht im Kommando. Sie ist eine aufmerksame Begleiterin, die allen Stimmen zuhören kann, ohne eine zu wählen. Mit der Übung wird die Haltung auch außerhalb der App verfügbar — am Küchentisch, im Meeting, im schwierigen Gespräch. Die App lehrt die Haltung nicht. Sie probt sie.",
+    },
+  },
 ];
 
 export function getCardBySlug(slug: string): LearningCard | undefined {

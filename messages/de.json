@@ -8,7 +8,16 @@
     "weflection": "We-Flection",
     "library": "Bibliothek",
     "settings": "Einstellungen",
-    "signIn": "Anmelden"
+    "signIn": "Anmelden",
+    "sessions": "Archiv"
+  },
+  "sessions": {
+    "title": "Archiv",
+    "intro": "Eine ruhige Aufzeichnung deiner inneren Bewegung.",
+    "empty": "Hier ist noch nichts.",
+    "noDatabase": "In dieser Umgebung ist keine Persistenz konfiguriert.",
+    "statusActive": "aktiv",
+    "continuedFrom": "Weitergeführt von"
   },
   "signIn": {
     "title": "Anmelden",
@@ -86,6 +95,18 @@
   },
   "safety": {
     "heading": "Etwas Tiefes meldet sich",
-    "linksHeading": "Wenn ein Mensch im Raum helfen würde"
+    "linksHeading": "Wenn ein Mensch im Raum helfen würde",
+    "moreLink": "Mehr Begleitungen und Krisennummern"
+  },
+  "practitioners": {
+    "title": "Eine Person finden",
+    "intro": "Wenn die Arbeit jemanden im Raum mit dir braucht. Aufgabe der App hier ist, nach außen zu zeigen — nicht, das Verzeichnis selbst zu sein.",
+    "disclaimer": "Das sind Einstiegspunkte, denen das Team vertraut. Wir prüfen einzelne Begleitungen nicht. Krisennummern werden jährlich überprüft; bitte vor Verlass auf eine konkrete Nummer kurz verifizieren.",
+    "kinds": {
+      "process_work": "Prozessarbeiterinnen (Mindell)",
+      "dynamic_facilitation": "Dynamic Facilitation",
+      "wisdom_council": "Wisdom Council",
+      "crisis_line": "Krisennummern"
+    }
   }
 }

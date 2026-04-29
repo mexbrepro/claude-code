@@ -198,7 +198,7 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
   }
 
   if (safety) {
-    return <SafetyPanel resources={safety} />;
+    return <SafetyPanel resources={safety} locale={locale} />;
   }
 
   if (phase === "carry_over" && carryOver) {
@@ -499,8 +499,10 @@ function Harvest({
 
 function SafetyPanel({
   resources,
+  locale,
 }: {
   resources: { bridgeMessage: string; links: { label: string; url: string }[] };
+  locale: string;
 }) {
   const t = useTranslations("safety");
   return (
@@ -525,6 +527,12 @@ function SafetyPanel({
             </li>
           ))}
         </ul>
+        <a
+          href={`/${locale}/find-a-practitioner`}
+          className="mt-4 inline-block text-sm text-ink hover:text-signal"
+        >
+          → {t("moreLink")}
+        </a>
       </div>
     </section>
   );

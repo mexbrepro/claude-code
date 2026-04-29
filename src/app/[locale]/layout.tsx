@@ -55,6 +55,7 @@ function Nav({ locale }: { locale: string }) {
     <nav className="flex gap-5 text-sm text-ink-muted">
       <NavLink href={`/${locale}/practice`} k="practice" />
       <NavLink href={`/${locale}/weflection`} k="weflection" />
+      <NavLink href={`/${locale}/sessions`} k="sessions" />
       <NavLink href={`/${locale}/library`} k="library" />
       <NavLink href={`/${locale}/settings`} k="settings" />
     </nav>
@@ -66,7 +67,7 @@ function NavLink({
   k,
 }: {
   href: string;
-  k: "practice" | "weflection" | "library" | "settings";
+  k: "practice" | "weflection" | "library" | "settings" | "sessions";
 }) {
   const t = useTranslations("nav");
   return (

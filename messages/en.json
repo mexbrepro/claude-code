@@ -8,7 +8,16 @@
     "weflection": "We-Flection",
     "library": "Library",
     "settings": "Settings",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "sessions": "Archive"
+  },
+  "sessions": {
+    "title": "Archive",
+    "intro": "A quiet record of your inner movement.",
+    "empty": "Nothing here yet.",
+    "noDatabase": "Persistence is not configured in this environment.",
+    "statusActive": "active",
+    "continuedFrom": "Continued from"
   },
   "signIn": {
     "title": "Sign in",
@@ -86,6 +95,18 @@
   },
   "safety": {
     "heading": "Something deep is asking for attention",
-    "linksHeading": "If a person in the room would help"
+    "linksHeading": "If a person in the room would help",
+    "moreLink": "More practitioners and crisis lines"
+  },
+  "practitioners": {
+    "title": "Find a person",
+    "intro": "When the work asks for someone in the room with you. The app's job here is to point outward, not to host the directory itself.",
+    "disclaimer": "These are entry points the team trusts. We do not vet individual practitioners. Crisis-line numbers are checked annually; please verify before relying on a specific number.",
+    "kinds": {
+      "process_work": "Process workers (Mindell)",
+      "dynamic_facilitation": "Dynamic Facilitation",
+      "wisdom_council": "Wisdom Council",
+      "crisis_line": "Crisis lines"
+    }
   }
 }
