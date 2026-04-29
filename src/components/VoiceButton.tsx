@@ -102,6 +102,22 @@ export function VoiceButton({
     onPointerCancel: () => {
       if (state === "recording") stop();
     },
+    // Keyboard equivalent: hold space (or enter) while focused.
+    onKeyDown: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      if ((e.key === " " || e.key === "Enter") && !e.repeat) {
+        e.preventDefault();
+        void start();
+      }
+    },
+    onKeyUp: (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
+        stop();
+      }
+    },
+    onBlur: () => {
+      if (state === "recording") stop();
+    },
   };
 
   const label =

@@ -6,6 +6,7 @@ import { ChartColumn, type ChartEntryView, type ChartType } from "./ChartColumn"
 import { PresenceDot } from "./PresenceDot";
 import { VoiceButton } from "./VoiceButton";
 import { SpeakButton } from "./SpeakButton";
+import { useAutoSpeak } from "@/lib/hooks/useAutoSpeak";
 
 type ClassifiedTurn = {
   chart: ChartType;
@@ -36,6 +37,7 @@ const COLUMN_ORDER: ChartType[] = ["solution", "concern", "data", "problem_state
 
 export function WeFlectionBoard({ locale }: { locale: string }) {
   const t = useTranslations("weflection");
+  const autoSpeak = useAutoSpeak();
   const [draft, setDraft] = useState("");
   const [pending, setPending] = useState(false);
   const [opener, setOpener] = useState<string | null>(null);
@@ -231,7 +233,7 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
         {opener && phase === "active" && (
           <div className="mt-3 flex items-start gap-2">
             <p className="user-words flex-1 text-lg text-ink">{opener}</p>
-            <SpeakButton text={opener} className="mt-1" />
+            <SpeakButton text={opener} className="mt-1" autoplay={autoSpeak} />
           </div>
         )}
       </header>
@@ -256,7 +258,7 @@ export function WeFlectionBoard({ locale }: { locale: string }) {
               <p className="user-words flex-1 text-[15px] text-ink-muted">
                 {verbalResponse}
               </p>
-              <SpeakButton text={verbalResponse} />
+              <SpeakButton text={verbalResponse} autoplay={autoSpeak} />
             </div>
           )}
 

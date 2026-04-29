@@ -6,6 +6,7 @@ import Link from "next/link";
 import { PresenceDot } from "./PresenceDot";
 import { VoiceButton } from "./VoiceButton";
 import { SpeakButton } from "./SpeakButton";
+import { useAutoSpeak } from "@/lib/hooks/useAutoSpeak";
 import { cn } from "@/lib/utils";
 
 type QuestionKey = "body" | "dream" | "edge" | "flirt";
@@ -189,6 +190,7 @@ function PracticeHistoryItem({
   item: EntryRecord;
   questionLabel: string;
 }) {
+  const autoSpeak = useAutoSpeak();
   return (
     <article className="border-l border-ground-200 pl-4 opacity-80">
       <p className="text-xs uppercase tracking-wide text-ink-muted">{questionLabel}</p>
@@ -202,7 +204,7 @@ function PracticeHistoryItem({
           <p className="user-words flex-1 text-[14px] text-ink-muted">
             {item.mirror.mirror}
           </p>
-          <SpeakButton text={item.mirror.mirror} />
+          <SpeakButton text={item.mirror.mirror} autoplay={autoSpeak} />
         </div>
       )}
       {item.mirror?.followup && (
@@ -210,7 +212,7 @@ function PracticeHistoryItem({
           <p className="user-words flex-1 text-[14px] text-ink">
             {item.mirror.followup}
           </p>
-          <SpeakButton text={item.mirror.followup} />
+          <SpeakButton text={item.mirror.followup} autoplay={autoSpeak} />
         </div>
       )}
     </article>

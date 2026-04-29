@@ -48,11 +48,30 @@ export const safetyTriggerEnum = pgEnum("safety_trigger", [
 
 export const users = pgTable("users", {
   id: uuid("id").primaryKey().defaultRandom(),
-  email: text("email"),
+  email: text("email").unique(),
   anonymousId: text("anonymous_id").unique(),
   displayName: text("display_name"),
   languagePreference: languageEnum("language_preference").notNull().default("en"),
   avatarChoice: avatarEnum("avatar_choice"),
+  // Spec §10: optional read-aloud per user. Stored on the User so it
+  // travels with sign-in across devices.
+  autoSpeak: boolean("auto_speak").notNull().default(false),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+// Passwordless magic-link tokens (spec §8). Single-use, ~15 min TTL.
+// Token is the cookie-bound secret; the row records who it's for so
+// verification can claim or merge anonymous users into a known account.
+export const magicLinkTokens = pgTable("magic_link_tokens", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  // The opaque token sent to the user's email. Stored hashed.
+  tokenHash: text("token_hash").notNull().unique(),
+  email: text("email").notNull(),
+  // Optional: existing user id if the requester was already anonymously
+  // signed in. On verify we merge that anon user into the email user.
+  claimedAnonymousId: text("claimed_anonymous_id"),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  usedAt: timestamp("used_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

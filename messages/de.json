@@ -7,7 +7,28 @@
     "practice": "Praxis",
     "weflection": "We-Flection",
     "library": "Bibliothek",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "signIn": "Anmelden"
+  },
+  "signIn": {
+    "title": "Anmelden",
+    "intro": "Hol dir einen einmaligen Link per E-Mail. Kein Passwort.",
+    "emailPlaceholder": "deine@email",
+    "sendLink": "Link senden",
+    "sending": "Senden",
+    "anonymous": "Du kannst die App auch anonym ohne Anmeldung nutzen.",
+    "status": {
+      "sent": "Schau in dein Postfach. Der Link funktioniert einmal und 15 Minuten lang.",
+      "error": "Etwas ist schiefgelaufen. Versuche es gleich nochmal.",
+      "invalid": "Dieser Link ist abgelaufen oder schon benutzt."
+    }
+  },
+  "settings": {
+    "autoSpeak": "Stimme des Avatars automatisch vorlesen",
+    "signOut": "Abmelden",
+    "email": "E-Mail",
+    "emailNone": "Anonym",
+    "save": "Speichern"
   },
   "onboarding": {
     "title": "Wähle deine Begleitung",

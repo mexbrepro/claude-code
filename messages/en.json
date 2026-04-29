@@ -7,7 +7,28 @@
     "practice": "Practice",
     "weflection": "We-Flection",
     "library": "Library",
-    "settings": "Settings"
+    "settings": "Settings",
+    "signIn": "Sign in"
+  },
+  "signIn": {
+    "title": "Sign in",
+    "intro": "Get a one-time link by email. No password.",
+    "emailPlaceholder": "your@email",
+    "sendLink": "Send link",
+    "sending": "Sending",
+    "anonymous": "You can keep using the app anonymously without signing in.",
+    "status": {
+      "sent": "Check your inbox. The link works once and for 15 minutes.",
+      "error": "Something went wrong. Try again in a moment.",
+      "invalid": "That link has expired or already been used."
+    }
+  },
+  "settings": {
+    "autoSpeak": "Read avatar's voice aloud automatically",
+    "signOut": "Sign out",
+    "email": "Email",
+    "emailNone": "Anonymous",
+    "save": "Save"
   },
   "onboarding": {
     "title": "Choose your companion",
