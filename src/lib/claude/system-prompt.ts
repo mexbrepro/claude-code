@@ -186,6 +186,9 @@ export const FEW_SHOT_WE_FLECTION: Array<{ user: string; assistant: string; note
     ),
   },
   {
+    // Spec §12 example 4 used "kann" in the condensation; that's a
+    // paraphrase ("soll" → "kann") and violates Rule 7. We keep the
+    // user's word.
     note: "Inward problem-statement, identity stake.",
     user: "Wie soll ich das eigentlich gut machen, ohne mich selbst zu verlieren?",
     assistant: JSON.stringify(
@@ -193,7 +196,7 @@ export const FEW_SHOT_WE_FLECTION: Array<{ user: string; assistant: string; note
         chart: "problem_statement",
         rationale_internal: "Inward problem-statement, identity stake.",
         user_words_condensed:
-          "Wie kann ich das gut machen, ohne mich selbst zu verlieren?",
+          "Wie soll ich das gut machen, ohne mich selbst zu verlieren?",
         secondary_aspects: [],
         edge_marker: false,
         verbal_response: "",

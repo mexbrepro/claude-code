@@ -3,6 +3,7 @@ import Link from "next/link";
 import { setRequestLocale } from "next-intl/server";
 import { getCardBySlug, LEARNING_CARDS } from "@/lib/content/learning-cards";
 import { CardReadTracker } from "@/components/CardReadTracker";
+import { CardLanded } from "@/components/CardLanded";
 
 export function generateStaticParams() {
   return LEARNING_CARDS.flatMap((card) =>
@@ -35,6 +36,7 @@ export default async function CardPage({
       <p className="user-words whitespace-pre-line text-[16px] leading-relaxed text-ink">
         {card.body[lang]}
       </p>
+      <CardLanded cardId={card.id} />
       {card.related.length > 0 && (
         <footer className="border-t border-ground-200 pt-4">
           <p className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">

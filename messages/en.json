@@ -60,7 +60,8 @@
     "carryOver": {
       "heading": "From last time, this was still open",
       "startFresh": "Start fresh",
-      "continueHere": "Continue here"
+      "continueHere": "Continue here",
+      "resolve": "Resolved"
     },
     "charts": {
       "solution": "Solutions",
@@ -77,7 +78,11 @@
   },
   "library": {
     "title": "Library",
-    "intro": "Cards are pulled, never pushed."
+    "intro": "Cards are pulled, never pushed.",
+    "whatLanded": "What landed?",
+    "save": "Save",
+    "saved": "Saved.",
+    "skip": "·"
   },
   "safety": {
     "heading": "Something deep is asking for attention",

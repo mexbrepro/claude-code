@@ -328,29 +328,76 @@ function CarryOverPanel({
   onContinueHere: () => void;
 }) {
   const t = useTranslations("weflection.carryOver");
+  const [resolvedThreads, setResolvedThreads] = useState<Set<string>>(new Set());
+  const [resolvedBookmarks, setResolvedBookmarks] = useState<Set<string>>(new Set());
+
+  function resolveThread(id: string) {
+    setResolvedThreads((s) => new Set(s).add(id));
+    void fetch("/api/weflection/carry-over/resolve", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ threadId: id }),
+    });
+  }
+  function resolveBookmark(id: string) {
+    setResolvedBookmarks((s) => new Set(s).add(id));
+    void fetch("/api/weflection/carry-over/resolve", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ bookmarkId: id }),
+    });
+  }
+
+  const visibleThreads = data.openThreads.filter((o) => !resolvedThreads.has(o.id));
+  const visibleBookmarks = data.bookmarks.filter((b) => !resolvedBookmarks.has(b.id));
+
+  // If the user resolves everything, the panel becomes a one-button continue.
+  const empty = visibleThreads.length === 0 && visibleBookmarks.length === 0;
+
   return (
     <section className="flex flex-col gap-6 pt-6">
       <h2 className="text-[11px] uppercase tracking-[0.18em] text-ink-muted">
         {t("heading")}
       </h2>
-      <ul className="flex flex-col gap-3">
-        {data.openThreads.map((o) => (
-          <li key={o.id} className="user-words text-[15px] text-ink">
-            — {o.content}
-          </li>
-        ))}
-        {data.bookmarks.map((b) => (
-          <li
-            key={b.id}
-            className="user-words border-l border-ground-300 pl-3 text-[15px] text-ink"
-          >
-            — {b.content}
-            {b.note && (
-              <span className="ml-2 text-xs text-ink-muted">({b.note})</span>
-            )}
-          </li>
-        ))}
-      </ul>
+      {!empty && (
+        <ul className="flex flex-col gap-3">
+          {visibleThreads.map((o) => (
+            <li
+              key={o.id}
+              className="user-words group flex items-start gap-2 text-[15px] text-ink"
+            >
+              <span className="flex-1">— {o.content}</span>
+              <button
+                aria-label={t("resolve")}
+                onClick={() => resolveThread(o.id)}
+                className="text-xs text-ink-muted opacity-0 transition-opacity group-hover:opacity-100 hover:text-ink"
+              >
+                ✓
+              </button>
+            </li>
+          ))}
+          {visibleBookmarks.map((b) => (
+            <li
+              key={b.id}
+              className="user-words group flex items-start gap-2 border-l border-ground-300 pl-3 text-[15px] text-ink"
+            >
+              <span className="flex-1">
+                — {b.content}
+                {b.note && (
+                  <span className="ml-2 text-xs text-ink-muted">({b.note})</span>
+                )}
+              </span>
+              <button
+                aria-label={t("resolve")}
+                onClick={() => resolveBookmark(b.id)}
+                className="text-xs text-ink-muted opacity-0 transition-opacity group-hover:opacity-100 hover:text-ink"
+              >
+                ✓
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="flex items-center gap-4 pt-4">
         <button
           onClick={onContinueHere}
