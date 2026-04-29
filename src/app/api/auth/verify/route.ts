@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import { db, schema } from "@/lib/db/client";
 import { hashToken } from "@/lib/auth/magic-link";
 import { routing } from "@/i18n/routing";
+import { track } from "@/lib/telemetry";
 
 const ANON_COOKIE = "dc_anon_id";
 
@@ -113,5 +114,6 @@ export async function GET(req: Request) {
     path: "/",
   });
 
+  track("auth.signed_in", { userRef: targetUserId, locale });
   return NextResponse.redirect(new URL(`/${locale}/practice?signed_in=1`, url));
 }

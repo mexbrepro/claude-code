@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { db, schema } from "@/lib/db/client";
 import { sendMagicLink } from "@/lib/auth/email";
 import { buildVerifyUrl, newToken } from "@/lib/auth/magic-link";
+import { track } from "@/lib/telemetry";
 
 const Body = z.object({
   email: z.string().email().max(254),
@@ -46,6 +47,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
   }
 
+  track("auth.magic_link_requested", { locale: body.locale });
   // Always return ok to avoid leaking which addresses are registered.
   return NextResponse.json({ ok: true });
 }

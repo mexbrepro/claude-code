@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dynamic Companion">
+  <!-- Maskable variant: the safe zone is the central 80%, so the icon
+       needs more breathing room around the edges. -->
+  <rect width="64" height="64" fill="#faf8f5"/>
+  <circle cx="27" cy="32" r="4.5" fill="#6c5d44"/>
+  <circle cx="37" cy="32" r="4.5" fill="#a8623a" opacity="0.85"/>
+</svg>

@@ -37,7 +37,14 @@
     "signOut": "Abmelden",
     "email": "E-Mail",
     "emailNone": "Anonym",
-    "save": "Speichern"
+    "save": "Speichern",
+    "voiceConsentLabel": "Sprachtranskription ist aktiviert"
+  },
+  "voiceConsent": {
+    "title": "Einwilligung Sprachtranskription",
+    "body": "Audio wird an einen Whisper-Dienst gesendet, um Sprache in Text umzuwandeln. Das Audio selbst wird nicht gespeichert. Du kannst auch ablehnen und beim Tippen bleiben.",
+    "accept": "Einwilligen",
+    "decline": "Jetzt nicht"
   },
   "onboarding": {
     "title": "Wähle deine Begleitung",

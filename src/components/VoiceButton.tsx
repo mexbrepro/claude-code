@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
-type State = "idle" | "permission" | "recording" | "transcribing" | "denied";
+type State = "idle" | "permission" | "recording" | "transcribing" | "denied" | "consent_needed";
 
 export function VoiceButton({
   locale,
@@ -14,20 +15,40 @@ export function VoiceButton({
   onTranscript: (text: string) => void;
   disabled?: boolean;
 }) {
+  const tConsent = useTranslations("voiceConsent");
   const [state, setState] = useState<State>("idle");
+  const [consent, setConsent] = useState<boolean | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
 
   useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => setConsent(!!d?.voiceConsent))
+      .catch(() => setConsent(false));
     return () => {
       // Always release the mic if the component unmounts mid-record.
       streamRef.current?.getTracks().forEach((t) => t.stop());
     };
   }, []);
 
+  async function grantConsent() {
+    await fetch("/api/settings", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ voiceConsent: true }),
+    });
+    setConsent(true);
+    setState("idle");
+  }
+
   async function start() {
     if (state !== "idle" || disabled) return;
+    if (consent === false) {
+      setState("consent_needed");
+      return;
+    }
     setState("permission");
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -130,6 +151,32 @@ export function VoiceButton({
       : state === "denied"
       ? "✕"
       : "◯";
+
+  if (state === "consent_needed") {
+    return (
+      <div
+        role="dialog"
+        aria-label={tConsent("title")}
+        className="flex flex-col gap-3 rounded-md border border-ground-300 bg-ground-50 p-4 text-sm text-ink"
+      >
+        <p className="user-words text-[15px]">{tConsent("body")}</p>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={grantConsent}
+            className="rounded-md bg-ground-700 px-3 py-1.5 text-xs text-ground-50"
+          >
+            {tConsent("accept")}
+          </button>
+          <button
+            onClick={() => setState("idle")}
+            className="text-xs text-ink-muted hover:text-ink"
+          >
+            {tConsent("decline")}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <button

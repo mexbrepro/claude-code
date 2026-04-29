@@ -4,6 +4,7 @@ import { dailyPracticeMirror } from "@/lib/claude/orchestrator";
 import { detectStage3, safetyResources } from "@/lib/safety/detect";
 import { getOrCreateUser } from "@/lib/auth/user";
 import { db, schema } from "@/lib/db/client";
+import { track } from "@/lib/telemetry";
 
 const Body = z.object({
   locale: z.enum(["en", "de"]),
@@ -37,6 +38,15 @@ export async function POST(req: Request) {
         resourcesOffered: stage3.map((h) => h.trigger),
       });
     }
+    track(
+      "safety.stage3",
+      { userRef: userId ?? undefined, locale: body.locale },
+      {
+        trigger: stage3[0].trigger,
+        triggerCount: stage3.length,
+        surface: "practice",
+      },
+    );
     return NextResponse.json({
       mirror: "",
       followup: null,

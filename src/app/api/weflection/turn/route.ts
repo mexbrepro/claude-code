@@ -9,6 +9,7 @@ import { detectStage3, safetyResources } from "@/lib/safety/detect";
 import { pickOpener } from "@/lib/claude/system-prompt";
 import { getOrCreateUser } from "@/lib/auth/user";
 import { db, schema } from "@/lib/db/client";
+import { track } from "@/lib/telemetry";
 
 const PriorEntry = z.object({
   raw: z.string(),
@@ -46,6 +47,15 @@ export async function POST(req: Request) {
         resourcesOffered: stage3.map((h) => h.trigger),
       });
     }
+    track(
+      "safety.stage3",
+      { userRef: userId ?? undefined, locale: body.locale },
+      {
+        trigger: stage3[0].trigger,
+        triggerCount: stage3.length,
+        surface: "weflection",
+      },
+    );
     return NextResponse.json({
       safety: {
         triggers: stage3,
@@ -57,16 +67,22 @@ export async function POST(req: Request) {
   // Resolve or create the WeFlectionSession.
   let sessionId = body.sessionId ?? null;
   if (db && userId && !sessionId) {
+    const opener = pickOpener(body.locale, []);
     const [created] = await db
       .insert(schema.weFlectionSessions)
       .values({
         userId,
-        openingQuestion: pickOpener(body.locale, []),
+        openingQuestion: opener,
         status: "active",
         continuedFromSessionId: body.continuedFromSessionId ?? null,
       })
       .returning({ id: schema.weFlectionSessions.id });
     sessionId = created.id;
+    track(
+      "weflection.opener_picked",
+      { userRef: userId, locale: body.locale },
+      { opener },
+    );
   }
 
   // Build prior turns as alternating user/assistant pairs so the model

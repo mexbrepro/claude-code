@@ -56,6 +56,9 @@ export const users = pgTable("users", {
   // Spec §10: optional read-aloud per user. Stored on the User so it
   // travels with sign-in across devices.
   autoSpeak: boolean("auto_speak").notNull().default(false),
+  // Spec §8: explicit voice consent before any audio capture. Stored
+  // server-side as the source of truth; mirrored client-side for UX.
+  voiceConsentAt: timestamp("voice_consent_at", { withTimezone: true }),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 

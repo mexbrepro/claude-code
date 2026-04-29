@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Dynamic Companion">
+  <rect width="64" height="64" rx="14" fill="#faf8f5"/>
+  <!-- Two presence dots — the held breath at the heart of the silence rule. -->
+  <circle cx="24" cy="32" r="5.5" fill="#6c5d44"/>
+  <circle cx="40" cy="32" r="5.5" fill="#a8623a" opacity="0.85"/>
+</svg>

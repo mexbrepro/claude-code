@@ -4,6 +4,7 @@ import { and, desc, eq, gte } from "drizzle-orm";
 import { getOrCreateUser } from "@/lib/auth/user";
 import { db, schema } from "@/lib/db/client";
 import { composeSurfacingMessage, detectPatterns } from "@/lib/patterns/detect";
+import { track } from "@/lib/telemetry";
 
 const Query = z.object({
   locale: z.enum(["en", "de"]).default("en"),
@@ -86,6 +87,12 @@ export async function GET(req: Request) {
     })),
   );
 
+  track(
+    "pattern.surfaced",
+    { userRef: userId, locale },
+    { count: fresh.length },
+  );
+
   return NextResponse.json({
     message: composeSurfacingMessage(fresh, locale),
     patterns: fresh,
@@ -99,6 +106,10 @@ export async function GET(req: Request) {
 const Ack = z.object({ patternKeys: z.array(z.string()), accepted: z.boolean() });
 export async function POST(req: Request) {
   const body = Ack.parse(await req.json());
-  // Reserved for future telemetry — no body actions yet.
-  return NextResponse.json({ ok: true, ...body });
+  track(
+    "pattern.acknowledged",
+    {},
+    { accepted: body.accepted, count: body.patternKeys.length },
+  );
+  return NextResponse.json({ ok: true });
 }

@@ -33,7 +33,7 @@ export const LEARNING_CARDS: LearningCard[] = [
     id: "three-levels",
     slug: "three-levels-of-experience",
     tags: ["mindell"],
-    related: ["dreambody", "edges-edge-figures", "essence"],
+    related: ["dreambody", "edges-edge-figures", "process-mind"],
     title: {
       en: "The Three Levels of Experience",
       de: "Die drei Ebenen der Erfahrung",
@@ -225,7 +225,7 @@ export const LEARNING_CARDS: LearningCard[] = [
     id: "generative-trance",
     slug: "generative-trance",
     tags: ["gilligan"],
-    related: ["dreambody", "essence"],
+    related: ["dreambody", "process-mind"],
     title: {
       en: "Generative Trance — Center, Connection, Acceptance",
       de: "Generative Trance — Zentrum, Verbindung, Annahme",
@@ -273,7 +273,7 @@ export const LEARNING_CARDS: LearningCard[] = [
     id: "process-mind",
     slug: "process-mind",
     tags: ["mindell", "essence"],
-    related: ["three-levels", "essence"],
+    related: ["three-levels", "the-big-you"],
     title: {
       en: "Process Mind — The Field That Knows",
       de: "Process Mind — das Feld, das weiß",
@@ -417,7 +417,7 @@ export const LEARNING_CARDS: LearningCard[] = [
     id: "the-big-you",
     slug: "the-big-you",
     tags: ["mindell", "essence"],
-    related: ["process-mind", "essence"],
+    related: ["process-mind", "the-witness"],
     title: {
       en: "The Big You",
       de: "Das große Du",
@@ -443,6 +443,118 @@ export const LEARNING_CARDS: LearningCard[] = [
         "We-Flection trains a small, quiet stance: the user as the facilitator of their own inner room. The stance is not detached and not in charge. It is an attentive companion who can hear all the voices without choosing one. With practice this stance becomes available outside the app — at the kitchen table, in the meeting, in the difficult conversation. The app does not teach the stance. It rehearses it.",
       de:
         "We-Flection übt eine kleine, ruhige Haltung ein: die Person als Begleitung des eigenen inneren Raumes. Die Haltung ist nicht distanziert und nicht im Kommando. Sie ist eine aufmerksame Begleiterin, die allen Stimmen zuhören kann, ohne eine zu wählen. Mit der Übung wird die Haltung auch außerhalb der App verfügbar — am Küchentisch, im Meeting, im schwierigen Gespräch. Die App lehrt die Haltung nicht. Sie probt sie.",
+    },
+  },
+  {
+    id: "polis-and-quadratic-voting",
+    slug: "polis-and-quadratic-voting",
+    tags: ["plurality"],
+    related: ["plurality", "deep-democracy"],
+    title: {
+      en: "Pol.is and Quadratic Voting — Concrete Plurality",
+      de: "Pol.is und quadratisches Wählen — konkrete Plurality",
+    },
+    body: {
+      en:
+        "Plurality is not only a posture; it has tools. Pol.is shows the topology of a conversation: thousands of statements, each rated agree / disagree / pass, mapped so consensus clusters become visible alongside the lines that don't cross. Quadratic voting lets people pay more for what they care about more, with diminishing returns, so intensity has a voice without a single intense voter dominating. Both tools are external; both rhyme with what We-Flection is doing inwardly — letting many voices be visible without forcing them into one answer.",
+      de:
+        "Plurality ist nicht nur eine Haltung; sie hat Werkzeuge. Pol.is zeigt die Topologie eines Gesprächs: tausende Aussagen, jede mit zustimmen / ablehnen / weiter bewertet, so kartiert, dass Konsens-Cluster sichtbar werden — neben den Linien, die sich nicht kreuzen. Quadratisches Wählen erlaubt, mehr für das zu zahlen, was einem mehr bedeutet, mit abnehmendem Ertrag, sodass Intensität eine Stimme bekommt, ohne dass eine einzelne intensive Stimme dominiert. Beide Werkzeuge sind außen; beide reimen sich mit dem, was We-Flection innerlich tut — viele Stimmen sichtbar werden lassen, ohne sie in eine Antwort zu zwingen.",
+    },
+  },
+  {
+    id: "wave-function-collapse",
+    slug: "wave-function-collapse",
+    tags: ["levy"],
+    related: ["observer-effect", "superposition"],
+    title: {
+      en: "Wave-Function Collapse — Choosing Without Killing",
+      de: "Wellenfunktion-Kollaps — wählen, ohne zu töten",
+    },
+    body: {
+      en:
+        "In quantum mechanics, the act of measurement collapses the superposition into one outcome. Levy's careful bridge is that the inner observer does the same thing every moment, and that the timing of the collapse matters. Premature collapse decides who one is before the actual answer has formed. Late collapse leaves the field too long and exhausts the holding. The skill is recognizing when the held tension has done its work — when the next move is genuinely arriving, not being forced. The avatar's silence rule is a way of postponing collapse until the user, not the app, is ready.",
+      de:
+        "In der Quantenmechanik kollabiert die Messung die Superposition in ein Ergebnis. Levys sorgfältige Brücke: der innere Beobachter tut in jedem Moment dasselbe, und das Timing des Kollapses zählt. Verfrühter Kollaps entscheidet, wer man ist, bevor die eigentliche Antwort entstanden ist. Später Kollaps lässt das Feld zu lange und erschöpft das Halten. Die Kunst ist zu erkennen, wann die gehaltene Spannung ihre Arbeit getan hat — wann der nächste Schritt wirklich kommt, nicht erzwungen wird. Die Schweigeregel des Avatars ist ein Weg, den Kollaps aufzuschieben, bis die Person — nicht die App — bereit ist.",
+    },
+  },
+  {
+    id: "soul-making-hillman",
+    slug: "soul-making-hillman",
+    tags: ["essence"],
+    related: ["dreambody", "the-big-you"],
+    title: {
+      en: "Soul-Making — James Hillman",
+      de: "Seele machen — James Hillman",
+    },
+    body: {
+      en:
+        "James Hillman uses 'soul' for the depth dimension that turns events into experience. Soul-making is not therapy in the sense of fixing; it is the slow practice of letting an image, a symptom, a relationship deepen into something one can live from. Hillman insisted on the literal: the dream is not a code, the figure is not a symbol — it is itself, and listening to it as itself is the work. Mindell, working in a different lineage, arrives near the same place via the dreambody. Both are saying: don't translate too soon.",
+      de:
+        "James Hillman verwendet „Seele" für die Tiefendimension, die Ereignisse in Erfahrung verwandelt. Seele machen ist keine Therapie im Sinn von reparieren; es ist die langsame Praxis, ein Bild, ein Symptom, eine Beziehung in etwas vertiefen zu lassen, von dem aus man leben kann. Hillman bestand auf dem Wörtlichen: der Traum ist kein Code, die Figur ist kein Symbol — sie ist sie selbst, und ihr als sich selbst zuzuhören ist die Arbeit. Mindell, in einer anderen Linie, kommt über den Traumkörper an einem ähnlichen Ort an. Beide sagen: übersetze nicht zu früh.",
+    },
+  },
+  {
+    id: "dreammaker-behind",
+    slug: "dreammaker-behind-the-dreammaker",
+    tags: ["mindell", "essence"],
+    related: ["process-mind", "the-big-you"],
+    title: {
+      en: "The Dreammaker Behind the Dreammaker",
+      de: "Der Traummacher hinter dem Traummacher",
+    },
+    body: {
+      en:
+        "Mindell sometimes points past the dream itself, past the dreambody, to what makes the dreaming. He calls it many things — the dreammaker behind the dreammaker, process mind, the big U. None of the names is the thing. The clue that one has touched it is a particular quietness — not absence but a settled attention, in which the next move arises without being chosen. This card is here as a horizon. It is not a destination the app can lead toward; it is something to recognize after the fact.",
+      de:
+        "Mindell zeigt manchmal über den Traum selbst hinaus, über den Traumkörper hinaus, auf das, was das Träumen macht. Er nennt es vielerlei — der Traummacher hinter dem Traummacher, Process Mind, das große U. Keiner der Namen ist die Sache. Der Hinweis, dass man es berührt hat, ist eine bestimmte Stille — keine Abwesenheit, sondern eine gesetzte Aufmerksamkeit, in der der nächste Schritt entsteht, ohne gewählt zu werden. Diese Karte steht hier als Horizont. Sie ist kein Ziel, in das die App führen kann; sie ist etwas, das man nachträglich erkennt.",
+    },
+  },
+  {
+    id: "group-dreaming",
+    slug: "group-dreaming",
+    tags: ["mindell", "plurality"],
+    related: ["dreaming-up", "what-is-df"],
+    title: {
+      en: "Group Dreaming",
+      de: "Gemeinsames Träumen",
+    },
+    body: {
+      en:
+        "When a group sits together long enough — in process-work circles, in DF sessions, in any quiet, well-held space — the same images, sensations, and figures begin to surface across people. Mindell calls this dreaming as a group. It is not telepathy. It is the field organizing itself: shared edges, shared secondaries, shared unspoken questions. The Wisdom Council Process and DF both rely on this — the group ends up addressing the thing it didn't know it was addressing. We-Flection is the inner version: many voices in one person, dreaming together, without one being chosen.",
+      de:
+        "Wenn eine Gruppe lange genug zusammensitzt — in Prozessarbeit-Kreisen, in DF-Sitzungen, in jedem ruhigen, gut gehaltenen Raum — beginnen dieselben Bilder, Empfindungen und Figuren über Menschen hinweg aufzutauchen. Mindell nennt das gemeinsames Träumen. Das ist keine Telepathie. Es ist das Feld, das sich selbst ordnet: gemeinsame Kanten, gemeinsame Sekundäres, gemeinsame ungestellte Fragen. Wisdom Council und DF verlassen sich beide darauf — die Gruppe addressiert am Ende das, von dem sie nicht wusste, dass sie es addressierte. We-Flection ist die innere Version: viele Stimmen in einer Person, gemeinsam träumend, ohne dass eine gewählt wird.",
+    },
+  },
+  {
+    id: "the-witness",
+    slug: "the-witness",
+    tags: ["mindell", "gilligan", "essence"],
+    related: ["the-big-you", "process-mind"],
+    title: {
+      en: "The Witness — Many Names, One Function",
+      de: "Die Zeugin — viele Namen, eine Funktion",
+    },
+    body: {
+      en:
+        "Almost every depth tradition names something like a witness — the part that can observe without judging, that holds the parts without being them. Process work calls it the metacommunicator. Generative trance calls it the larger awareness. Advaita calls it the seer. Christian contemplative practice calls it the prayer of attention. The names point at the same function: a centered presence that can hold the whole inner room. The avatar in this app does not try to give the user a witness. It practices being a small one, and trusts that the user's own grows in the meantime.",
+      de:
+        "Fast jede Tiefen-Tradition benennt etwas wie eine Zeugin — den Teil, der ohne Urteil beobachten kann, der die Teile hält, ohne sie zu sein. Prozessarbeit nennt sie die Metakommunikatorin. Generative Trance nennt sie das größere Gewahrsein. Advaita nennt sie die Sehende. Christliche kontemplative Praxis nennt sie das Gebet der Aufmerksamkeit. Die Namen zeigen auf dieselbe Funktion: eine zentrierte Präsenz, die den ganzen inneren Raum halten kann. Der Avatar dieser App versucht nicht, der Person eine Zeugin zu geben. Er übt, eine kleine zu sein — und vertraut, dass die der Person darin wächst.",
+    },
+  },
+  {
+    id: "resonance-rosa",
+    slug: "resonance-rosa",
+    tags: ["plurality"],
+    related: ["the-witness", "world-channel-attention"],
+    title: {
+      en: "Resonance — Hartmut Rosa",
+      de: "Resonanz — Hartmut Rosa",
+    },
+    body: {
+      en:
+        "Hartmut Rosa names resonance as the kind of relationship — to a person, to work, to a landscape, to oneself — in which both sides are reachable and both sides are changed. The opposite is not loud disagreement; it is mute alienation, where neither side can move the other. Inner work that produces resonance is not measurable in fixed outcomes. It shows up as availability — the user becomes someone things can reach again, and someone whose own response actually reaches the world. Plurality at the political scale and inner work at the personal scale are both attempts to keep resonance possible.",
+      de:
+        "Hartmut Rosa nennt Resonanz die Art von Beziehung — zu einem Menschen, zu einer Arbeit, zu einer Landschaft, zu sich selbst — in der beide Seiten erreichbar und beide Seiten verändert werden. Das Gegenteil ist nicht laute Uneinigkeit; es ist stumme Entfremdung, in der keine Seite die andere bewegen kann. Innere Arbeit, die Resonanz erzeugt, ist nicht in festen Ergebnissen messbar. Sie zeigt sich als Erreichbarkeit — die Person wird wieder jemand, den Dinge erreichen, und jemand, dessen eigene Antwort die Welt tatsächlich erreicht. Plurality auf politischer Ebene und innere Arbeit auf persönlicher sind beides Versuche, Resonanz möglich zu halten.",
     },
   },
 ];
