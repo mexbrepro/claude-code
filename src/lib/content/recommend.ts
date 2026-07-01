@@ -46,6 +46,21 @@ const TAG_KEYWORDS: Record<CardTag, RegExp[]> = {
     /\bproblem(?:stellung|-?statement)\b/i,
   ],
   plurality: [/\bwe\b/i, /\bcommunity\b/i, /\bgroup\b/i, /\bgemeinschaft\b/i, /\bwir\b/i],
+  rank: [/\brank\b/i, /\bprivilege\b/i, /\bpower\b/i, /\brang\b/i, /\bmacht\b/i, /\bprivileg/i],
+  gilligan: [
+    /\btrance\b/i,
+    /\bcenter(?:ed|ing)?\b/i,
+    /\bacceptance\b/i,
+    /\bzentr(?:um|iert)\b/i,
+    /\bannahme\b/i,
+  ],
+  synchronicity: [
+    /\bsynchronicity\b/i,
+    /\bcoincidence\b/i,
+    /\bmeaningful\b/i,
+    /\bsynchronizit[äa]t\b/i,
+    /\bzufall\b/i,
+  ],
 };
 
 export type CardRecommendation = {

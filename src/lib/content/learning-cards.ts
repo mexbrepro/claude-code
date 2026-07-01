@@ -298,7 +298,7 @@ export const LEARNING_CARDS: LearningCard[] = [
       en:
         "Mindell uses 'dreaming up' for the way one person's secondary process gets enacted by another in the room. The withdrawn one is dreamed up into being insistent; the assertive one is dreamed up into hesitating. Inside oneself, the same thing happens between voices: the part that wants to leave is dreamed up by the part that wants to stay, and vice versa. Noticing dreaming-up is one of the fastest ways out of self-blame. The voice you hear is often answering the voice you didn't notice asking.",
       de:
-        "Mindell nutzt „dreaming up" für die Art, in der der sekundäre Prozess einer Person von einer anderen im Raum gelebt wird. Die Zurückhaltende wird ins Beharrliche „hineingeträumt"; die Bestimmte ins Zögern. Im Inneren passiert dasselbe zwischen Stimmen: der Teil, der gehen will, wird von dem Teil, der bleiben will, hineingeträumt — und umgekehrt. Dreaming-up zu bemerken ist einer der schnellsten Wege aus der Selbstbeschuldigung. Die Stimme, die du hörst, antwortet oft auf die Stimme, die du nicht bemerkt hast.",
+        "Mindell nutzt „dreaming up“ für die Art, in der der sekundäre Prozess einer Person von einer anderen im Raum gelebt wird. Die Zurückhaltende wird ins Beharrliche „hineingeträumt“; die Bestimmte ins Zögern. Im Inneren passiert dasselbe zwischen Stimmen: der Teil, der gehen will, wird von dem Teil, der bleiben will, hineingeträumt — und umgekehrt. Dreaming-up zu bemerken ist einer der schnellsten Wege aus der Selbstbeschuldigung. Die Stimme, die du hörst, antwortet oft auf die Stimme, die du nicht bemerkt hast.",
     },
   },
   {
@@ -346,7 +346,7 @@ export const LEARNING_CARDS: LearningCard[] = [
       en:
         "Process work is often described as 'unfolding the secondary,' but the deeper move is the integration that follows. The voice that was unwelcome — tired, angry, longing — becomes a voice the self can speak from, not just one the self has. The change is rarely dramatic. It looks like a sentence the user could not have said three weeks ago landing without effort. The secondary has become primary; the room is wider; the next secondary is already arriving at the edge.",
       de:
-        "Prozessarbeit wird oft als „Entfaltung des Sekundären" beschrieben, aber der tiefere Schritt ist die Integration danach. Die Stimme, die nicht willkommen war — die müde, die wütende, die sehnende — wird zu einer, von der das Selbst sprechen kann, nicht nur eine, die das Selbst hat. Die Veränderung ist selten dramatisch. Sie sieht aus wie ein Satz, den die Person vor drei Wochen nicht hätte sagen können, der jetzt mühelos kommt. Das Sekundäre ist primär geworden; der Raum ist weiter; das nächste Sekundäre steht schon an der Kante.",
+        "Prozessarbeit wird oft als „Entfaltung des Sekundären“ beschrieben, aber der tiefere Schritt ist die Integration danach. Die Stimme, die nicht willkommen war — die müde, die wütende, die sehnende — wird zu einer, von der das Selbst sprechen kann, nicht nur eine, die das Selbst hat. Die Veränderung ist selten dramatisch. Sie sieht aus wie ein Satz, den die Person vor drei Wochen nicht hätte sagen können, der jetzt mühelos kommt. Das Sekundäre ist primär geworden; der Raum ist weiter; das nächste Sekundäre steht schon an der Kante.",
     },
   },
   {
@@ -378,7 +378,7 @@ export const LEARNING_CARDS: LearningCard[] = [
       en:
         "Process work uses 'roles' for the positions in a field — primary, secondary, edge figure, dreambody figure, the absent third. A core move is the role switch: the user speaks for a moment as the figure they have been speaking about. Done in a session, it is fast and bodily. Done inwardly with this app, it is slower and quieter — writing or saying a single sentence as the part of the self that wasn't the one talking. Even one such sentence usually shifts what the next contribution wants to be.",
       de:
-        "Prozessarbeit nutzt „Rollen" für die Positionen in einem Feld — primär, sekundär, Kantenfigur, Traumkörperfigur, das abwesende Dritte. Ein Kernschritt ist der Rollenwechsel: die Person spricht für einen Moment als die Figur, von der sie eben gesprochen hat. In einer Sitzung ist das schnell und körperlich. Innerlich mit dieser App ist es langsamer und ruhiger — einen Satz schreiben oder sagen, als der Teil des Selbst, der eben nicht der sprechende war. Schon ein solcher Satz verschiebt meist, was der nächste Beitrag werden will.",
+        "Prozessarbeit nutzt „Rollen“ für die Positionen in einem Feld — primär, sekundär, Kantenfigur, Traumkörperfigur, das abwesende Dritte. Ein Kernschritt ist der Rollenwechsel: die Person spricht für einen Moment als die Figur, von der sie eben gesprochen hat. In einer Sitzung ist das schnell und körperlich. Innerlich mit dieser App ist es langsamer und ruhiger — einen Satz schreiben oder sagen, als der Teil des Selbst, der eben nicht der sprechende war. Schon ein solcher Satz verschiebt meist, was der nächste Beitrag werden will.",
     },
   },
   {
@@ -394,7 +394,7 @@ export const LEARNING_CARDS: LearningCard[] = [
       en:
         "Jim Rough's facilitation has roughly eight kinds of question, and the avatar in this app uses four of them. The full set: 'What more?' (open), 'How could that read as a problem-statement?' (translate concern), 'If you could decide, what would you do?' (release agency), 'Tell me more about that' (concretize), 'Did I get that right?' (mirror), 'Whose voice is that?' (locate), 'What would the other side say?' (welcome the missing), 'Anything else?' (close). The four the app uses are the safest for solo work; the other four belong in a room with a person who can read the body.",
       de:
-        "Jim Roughs Facilitation kennt grob acht Arten von Fragen, vier davon nutzt der Avatar in dieser App. Die ganze Reihe: „Was noch?" (öffnen), „Wie könnte das als Problemstellung lauten?" (Anliegen übersetzen), „Wenn du entscheiden könntest, was würdest du tun?" (Handlungsmacht freigeben), „Erzähl mir mehr davon" (konkretisieren), „Habe ich das richtig verstanden?" (spiegeln), „Wessen Stimme ist das?" (verorten), „Was würde die andere Seite sagen?" (das Fehlende einladen), „Sonst noch etwas?" (abschließen). Die vier, die die App nutzt, sind die sichersten für Soloarbeit; die anderen vier gehören in einen Raum mit einem Menschen, der den Körper lesen kann.",
+        "Jim Roughs Facilitation kennt grob acht Arten von Fragen, vier davon nutzt der Avatar in dieser App. Die ganze Reihe: „Was noch?“ (öffnen), „Wie könnte das als Problemstellung lauten?“ (Anliegen übersetzen), „Wenn du entscheiden könntest, was würdest du tun?“ (Handlungsmacht freigeben), „Erzähl mir mehr davon“ (konkretisieren), „Habe ich das richtig verstanden?“ (spiegeln), „Wessen Stimme ist das?“ (verorten), „Was würde die andere Seite sagen?“ (das Fehlende einladen), „Sonst noch etwas?“ (abschließen). Die vier, die die App nutzt, sind die sichersten für Soloarbeit; die anderen vier gehören in einen Raum mit einem Menschen, der den Körper lesen kann.",
     },
   },
   {
@@ -426,7 +426,7 @@ export const LEARNING_CARDS: LearningCard[] = [
       en:
         "Mindell sometimes points at a larger self underneath the parts — the 'big you' — that holds the small selves the way the sky holds weather. It is not a doctrine. It is a noticeable change of register, a sense of being held by something one is also part of. The big you is not louder than the parts; it is the medium in which the parts can be heard. When inner work touches it, the parts often quiet on their own.",
       de:
-        "Mindell zeigt manchmal auf ein größeres Selbst unter den Teilen — das „große Du" — das die kleinen Selbste hält, wie der Himmel das Wetter hält. Es ist keine Lehre. Es ist eine spürbare Verschiebung des Registers, ein Gefühl, gehalten zu sein von etwas, dem man auch angehört. Das große Du ist nicht lauter als die Teile; es ist das Medium, in dem die Teile hörbar werden. Wenn innere Arbeit es berührt, werden die Teile oft von selbst leiser.",
+        "Mindell zeigt manchmal auf ein größeres Selbst unter den Teilen — das „große Du“ — das die kleinen Selbste hält, wie der Himmel das Wetter hält. Es ist keine Lehre. Es ist eine spürbare Verschiebung des Registers, ein Gefühl, gehalten zu sein von etwas, dem man auch angehört. Das große Du ist nicht lauter als die Teile; es ist das Medium, in dem die Teile hörbar werden. Wenn innere Arbeit es berührt, werden die Teile oft von selbst leiser.",
     },
   },
   {
@@ -490,7 +490,7 @@ export const LEARNING_CARDS: LearningCard[] = [
       en:
         "James Hillman uses 'soul' for the depth dimension that turns events into experience. Soul-making is not therapy in the sense of fixing; it is the slow practice of letting an image, a symptom, a relationship deepen into something one can live from. Hillman insisted on the literal: the dream is not a code, the figure is not a symbol — it is itself, and listening to it as itself is the work. Mindell, working in a different lineage, arrives near the same place via the dreambody. Both are saying: don't translate too soon.",
       de:
-        "James Hillman verwendet „Seele" für die Tiefendimension, die Ereignisse in Erfahrung verwandelt. Seele machen ist keine Therapie im Sinn von reparieren; es ist die langsame Praxis, ein Bild, ein Symptom, eine Beziehung in etwas vertiefen zu lassen, von dem aus man leben kann. Hillman bestand auf dem Wörtlichen: der Traum ist kein Code, die Figur ist kein Symbol — sie ist sie selbst, und ihr als sich selbst zuzuhören ist die Arbeit. Mindell, in einer anderen Linie, kommt über den Traumkörper an einem ähnlichen Ort an. Beide sagen: übersetze nicht zu früh.",
+        "James Hillman verwendet „Seele“ für die Tiefendimension, die Ereignisse in Erfahrung verwandelt. Seele machen ist keine Therapie im Sinn von reparieren; es ist die langsame Praxis, ein Bild, ein Symptom, eine Beziehung in etwas vertiefen zu lassen, von dem aus man leben kann. Hillman bestand auf dem Wörtlichen: der Traum ist kein Code, die Figur ist kein Symbol — sie ist sie selbst, und ihr als sich selbst zuzuhören ist die Arbeit. Mindell, in einer anderen Linie, kommt über den Traumkörper an einem ähnlichen Ort an. Beide sagen: übersetze nicht zu früh.",
     },
   },
   {
