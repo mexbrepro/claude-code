@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import { story } from "./story.config";
+import { fraunces, sourceSerif, inter } from "./fonts";
 
 export const metadata: Metadata = {
   title: `${story.meta.title} — ${story.meta.footerNote}`,
@@ -24,7 +25,11 @@ export default function StoryLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="de" style={{ colorScheme: "dark" }}>
+    <html
+      lang="de"
+      style={{ colorScheme: "dark" }}
+      className={`${fraunces.variable} ${sourceSerif.variable} ${inter.variable}`}
+    >
       <body className="min-h-screen bg-black text-white antialiased [text-rendering:optimizeLegibility]">
         {children}
       </body>
