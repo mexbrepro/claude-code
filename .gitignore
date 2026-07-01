@@ -13,3 +13,6 @@ dist
 .vscode
 coverage
 drizzle/_journal.local.json
+
+# TypeScript incremental build info
+*.tsbuildinfo
