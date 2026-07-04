@@ -1,27 +1,18 @@
-import { Fraunces, Source_Serif_4, Inter } from "next/font/google";
+import { Cabin, Lora } from "next/font/google";
 
-// Düster-dramatisch: hohe Kontraste, editoriale Serife mit Charakter.
-export const fraunces = Fraunces({
+// Überschriften, Labels, UI-Chrome: kräftige, serifenlose Grotesk.
+export const cabin = Cabin({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
+  weight: ["500", "600", "700"],
+  variable: "--font-cabin",
   display: "swap",
 });
 
-// Clean & editorial: ruhige Zeitungs-Serife.
-export const sourceSerif = Source_Serif_4({
+// Lesetext: ruhige Serife für Fließtext und Zitate.
+export const lora = Lora({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   style: ["normal", "italic"],
-  variable: "--font-source-serif",
-  display: "swap",
-});
-
-// Sans für UI-Chrome, Labels, Fließtext in beiden Varianten.
-export const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-inter",
+  variable: "--font-lora",
   display: "swap",
 });

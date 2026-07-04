@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import { story } from "./story.config";
-import { fraunces, sourceSerif, inter } from "./fonts";
+import { cabin, lora } from "./fonts";
 
 export const metadata: Metadata = {
   title: `${story.meta.title} — ${story.meta.footerNote}`,
@@ -28,9 +28,12 @@ export default function StoryLayout({
     <html
       lang="de"
       style={{ colorScheme: "dark" }}
-      className={`${fraunces.variable} ${sourceSerif.variable} ${inter.variable}`}
+      className={`${cabin.variable} ${lora.variable}`}
     >
-      <body className="min-h-screen bg-black text-white antialiased [text-rendering:optimizeLegibility]">
+      <body
+        className="min-h-screen bg-black text-white antialiased [text-rendering:optimizeLegibility]"
+        style={{ fontFamily: "var(--font-lora)" }}
+      >
         {children}
       </body>
     </html>

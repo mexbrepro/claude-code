@@ -44,7 +44,10 @@ export default function StoryPage() {
                 ACCENT_LINE[chapter.accent ?? "amber"]
               }`}
             />
-            <h2 className="mt-6 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl">
+            <h2
+              className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl"
+              style={{ fontFamily: "var(--font-cabin)" }}
+            >
               {chapter.title}
             </h2>
           </div>
@@ -57,7 +60,12 @@ export default function StoryPage() {
 
       {/* Abspann */}
       <footer className="border-t border-white/10 px-6 py-24 text-center">
-        <p className="font-serif text-2xl text-white/80">{meta.title}</p>
+        <p
+          className="text-2xl font-semibold text-white/80"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
+          {meta.title}
+        </p>
         <p className="mx-auto mt-3 max-w-md text-sm text-white/40">
           {meta.footerNote}
         </p>

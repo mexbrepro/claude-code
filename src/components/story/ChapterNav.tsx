@@ -46,6 +46,7 @@ export function ChapterNav({ chapters }: { chapters: NavItem[] }) {
                 ? "text-white opacity-100"
                 : "text-white/40 opacity-0 group-hover:opacity-100",
             )}
+            style={{ fontFamily: "var(--font-cabin)" }}
           >
             {c.nav}
           </span>

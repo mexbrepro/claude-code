@@ -41,10 +41,16 @@ export function StickyScrolly({
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   className="text-center"
                 >
-                  <div className="text-xs uppercase tracking-widest text-amber-400">
+                  <div
+                    className="text-xs uppercase tracking-widest text-amber-400"
+                    style={{ fontFamily: "var(--font-cabin)" }}
+                  >
                     {steps[active]?.label}
                   </div>
-                  <div className="mt-2 font-serif text-7xl font-semibold tabular-nums text-white">
+                  <div
+                    className="mt-2 text-7xl font-bold tabular-nums text-white"
+                    style={{ fontFamily: "var(--font-cabin)" }}
+                  >
                     {steps[active]?.big}
                   </div>
                 </motion.div>
@@ -108,10 +114,16 @@ function ScrollyStep({
     >
       {/* Mobile: Kennzahl direkt anzeigen (keine Sticky-Grafik) */}
       <div className="lg:hidden">
-        <div className="text-xs uppercase tracking-widest text-amber-400">
+        <div
+          className="text-xs uppercase tracking-widest text-amber-400"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
           {step.label}
         </div>
-        <div className="font-serif text-6xl font-semibold tabular-nums text-white">
+        <div
+          className="text-6xl font-bold tabular-nums text-white"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
           {step.big}
         </div>
       </div>

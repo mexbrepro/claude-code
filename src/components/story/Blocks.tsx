@@ -14,12 +14,18 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
       return (
         <Reveal className="mx-auto max-w-2xl px-6 py-16 md:py-24">
           {block.kicker && (
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-amber-400">
+            <p
+              className="mb-3 text-xs uppercase tracking-[0.3em] text-amber-400"
+              style={{ fontFamily: "var(--font-cabin)" }}
+            >
               {block.kicker}
             </p>
           )}
           {block.heading && (
-            <h2 className="mb-6 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl">
+            <h2
+              className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl"
+              style={{ fontFamily: "var(--font-cabin)" }}
+            >
               {block.heading}
             </h2>
           )}
@@ -36,7 +42,7 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
     case "pullquote":
       return (
         <Reveal className="mx-auto max-w-3xl px-6 py-16 text-center md:py-28">
-          <blockquote className="font-serif text-2xl font-medium leading-snug text-white sm:text-3xl md:text-4xl">
+          <blockquote className="text-2xl font-medium italic leading-snug text-white sm:text-3xl md:text-4xl">
             <span className="text-amber-400">“</span>
             {block.quote}
             <span className="text-amber-400">”</span>
@@ -59,7 +65,10 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
           <Reveal className="relative z-10 mx-auto max-w-2xl px-6">
             {block.heading && (
-              <h2 className="font-serif text-3xl font-semibold text-white sm:text-5xl">
+              <h2
+                className="text-3xl font-bold text-white sm:text-5xl"
+                style={{ fontFamily: "var(--font-cabin)" }}
+              >
                 {block.heading}
               </h2>
             )}
@@ -77,7 +86,10 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
       return (
         <Reveal className="mx-auto max-w-5xl px-6 py-20 md:py-28">
           {block.heading && (
-            <h3 className="mb-14 text-center text-sm uppercase tracking-[0.3em] text-white/40">
+            <h3
+              className="mb-14 text-center text-sm uppercase tracking-[0.3em] text-white/40"
+              style={{ fontFamily: "var(--font-cabin)" }}
+            >
               {block.heading}
             </h3>
           )}

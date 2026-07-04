@@ -73,7 +73,7 @@ function Dramatic() {
   return (
     <div
       className="relative min-h-screen bg-black text-white"
-      style={{ fontFamily: "var(--font-inter)" }}
+      style={{ fontFamily: "var(--font-lora)" }}
     >
       {/* Vignette + Korn für Kino-Anmutung */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.55)_100%)]" />
@@ -81,8 +81,8 @@ function Dramatic() {
       <section className="relative flex min-h-[70vh] flex-col items-center justify-center px-6 text-center">
         <div className="mb-6 h-px w-16 bg-gradient-to-r from-transparent via-amber-400/70 to-transparent" />
         <h1
-          className="text-6xl font-semibold tracking-tight text-white sm:text-8xl"
-          style={{ fontFamily: "var(--font-fraunces)" }}
+          className="text-6xl font-bold tracking-tight text-white sm:text-8xl"
+          style={{ fontFamily: "var(--font-cabin)" }}
         >
           {story.meta.title}
         </h1>
@@ -92,12 +92,15 @@ function Dramatic() {
       </section>
 
       <section className="mx-auto max-w-2xl px-6 py-24">
-        <p className="mb-3 text-xs uppercase tracking-[0.35em] text-amber-400">
+        <p
+          className="mb-3 text-xs uppercase tracking-[0.35em] text-amber-400"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
           {prose.kicker}
         </p>
         <h2
-          className="mb-6 text-3xl font-semibold leading-tight text-white sm:text-4xl"
-          style={{ fontFamily: "var(--font-fraunces)" }}
+          className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl"
+          style={{ fontFamily: "var(--font-cabin)" }}
         >
           {prose.heading}
         </h2>
@@ -111,10 +114,7 @@ function Dramatic() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-        <blockquote
-          className="text-3xl font-medium leading-snug text-white sm:text-4xl"
-          style={{ fontFamily: "var(--font-fraunces)" }}
-        >
+        <blockquote className="text-3xl font-medium italic leading-snug text-white sm:text-4xl">
           <span className="text-amber-400">“</span>
           {quote.quote}
           <span className="text-amber-400">”</span>
@@ -122,15 +122,18 @@ function Dramatic() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 py-24">
-        <h3 className="mb-14 text-center text-sm uppercase tracking-[0.35em] text-white/40">
+        <h3
+          className="mb-14 text-center text-sm uppercase tracking-[0.35em] text-white/40"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
           {stats.heading}
         </h3>
         <div className="grid gap-14 sm:grid-cols-3">
           {stats.items.map((item, i) => (
             <div key={i} className="text-center">
               <div
-                className="text-6xl font-semibold tabular-nums text-white"
-                style={{ fontFamily: "var(--font-fraunces)" }}
+                className="text-6xl font-bold tabular-nums text-white"
+                style={{ fontFamily: "var(--font-cabin)" }}
               >
                 {item.value.toLocaleString("de-DE")}
                 <span className="text-amber-400">{item.suffix}</span>
@@ -151,15 +154,15 @@ function Editorial() {
   return (
     <div
       className="min-h-screen bg-[#faf7f2] text-[#242019]"
-      style={{ fontFamily: "var(--font-inter)" }}
+      style={{ fontFamily: "var(--font-lora)" }}
     >
       <section className="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-6 text-center">
         <p className="mb-6 text-xs uppercase tracking-[0.35em] text-[#8a6a3f]">
           {story.meta.footerNote}
         </p>
         <h1
-          className="text-6xl font-semibold leading-[1.05] tracking-tight text-[#1a1712] sm:text-7xl"
-          style={{ fontFamily: "var(--font-source-serif)" }}
+          className="text-6xl font-bold leading-[1.05] tracking-tight text-[#1a1712] sm:text-7xl"
+          style={{ fontFamily: "var(--font-cabin)" }}
         >
           {story.meta.title}
         </h1>
@@ -171,22 +174,21 @@ function Editorial() {
       <div className="mx-auto h-px max-w-3xl bg-[#e4dcc9]" />
 
       <section className="mx-auto max-w-2xl px-6 py-24">
-        <p className="mb-3 text-xs uppercase tracking-[0.3em] text-[#8a6a3f]">
+        <p
+          className="mb-3 text-xs uppercase tracking-[0.3em] text-[#8a6a3f]"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
           {prose.kicker}
         </p>
         <h2
-          className="mb-6 text-3xl font-semibold leading-tight text-[#1a1712] sm:text-4xl"
-          style={{ fontFamily: "var(--font-source-serif)" }}
+          className="mb-6 text-3xl font-bold leading-tight text-[#1a1712] sm:text-4xl"
+          style={{ fontFamily: "var(--font-cabin)" }}
         >
           {prose.heading}
         </h2>
         <div className="space-y-5">
           {prose.body.map((p, i) => (
-            <p
-              key={i}
-              className="text-lg leading-relaxed text-[#3a342c]"
-              style={{ fontFamily: "var(--font-source-serif)" }}
-            >
+            <p key={i} className="text-lg leading-relaxed text-[#3a342c]">
               {p}
             </p>
           ))}
@@ -194,10 +196,7 @@ function Editorial() {
       </section>
 
       <section className="mx-auto max-w-3xl px-6 py-20 text-center">
-        <blockquote
-          className="text-2xl font-medium italic leading-snug text-[#1a1712] sm:text-3xl"
-          style={{ fontFamily: "var(--font-source-serif)" }}
-        >
+        <blockquote className="text-2xl font-medium italic leading-snug text-[#1a1712] sm:text-3xl">
           „{quote.quote}“
         </blockquote>
       </section>
@@ -205,15 +204,18 @@ function Editorial() {
       <div className="mx-auto h-px max-w-3xl bg-[#e4dcc9]" />
 
       <section className="mx-auto max-w-5xl px-6 py-24">
-        <h3 className="mb-14 text-center text-xs uppercase tracking-[0.3em] text-[#8a6a3f]">
+        <h3
+          className="mb-14 text-center text-xs uppercase tracking-[0.3em] text-[#8a6a3f]"
+          style={{ fontFamily: "var(--font-cabin)" }}
+        >
           {stats.heading}
         </h3>
         <div className="grid gap-14 sm:grid-cols-3">
           {stats.items.map((item, i) => (
             <div key={i} className="text-center">
               <div
-                className="text-5xl font-semibold tabular-nums text-[#1a1712]"
-                style={{ fontFamily: "var(--font-source-serif)" }}
+                className="text-5xl font-bold tabular-nums text-[#1a1712]"
+                style={{ fontFamily: "var(--font-cabin)" }}
               >
                 {item.value.toLocaleString("de-DE")}
                 <span className="text-[#a8623a]">{item.suffix}</span>

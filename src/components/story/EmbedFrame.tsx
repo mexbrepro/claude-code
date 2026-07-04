@@ -64,7 +64,10 @@ export function EmbedFrame({
             />
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
-              <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-xs uppercase tracking-widest text-amber-300">
+              <span
+                className="rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-xs uppercase tracking-widest text-amber-300"
+                style={{ fontFamily: "var(--font-cabin)" }}
+              >
                 {info.name} · noch einzubetten
               </span>
               <p className="max-w-md text-sm text-white/60">{info.how}</p>

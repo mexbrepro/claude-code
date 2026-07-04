@@ -53,7 +53,8 @@ export function Hero({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif text-6xl font-semibold tracking-tight text-white sm:text-8xl md:text-9xl"
+          className="text-6xl font-bold tracking-tight text-white sm:text-8xl md:text-9xl"
+          style={{ fontFamily: "var(--font-cabin)" }}
         >
           {title}
         </motion.h1>

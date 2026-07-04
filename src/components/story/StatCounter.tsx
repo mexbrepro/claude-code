@@ -36,7 +36,10 @@ export function StatCounter({
 
   return (
     <div ref={ref} className="text-center">
-      <div className="font-serif text-5xl font-semibold tabular-nums text-white sm:text-6xl md:text-7xl">
+      <div
+        className="text-5xl font-bold tabular-nums text-white sm:text-6xl md:text-7xl"
+        style={{ fontFamily: "var(--font-cabin)" }}
+      >
         {formatted}
         <span className="text-amber-400">{suffix}</span>
       </div>
