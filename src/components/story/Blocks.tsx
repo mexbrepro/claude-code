@@ -15,23 +15,23 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
         <Reveal className="mx-auto max-w-2xl px-6 py-16 md:py-24">
           {block.kicker && (
             <p
-              className="mb-3 text-xs uppercase tracking-[0.3em] text-amber-400"
-              style={{ fontFamily: "var(--font-cabin)" }}
+              className="mb-3 text-xs uppercase tracking-[0.3em]"
+              style={{ fontFamily: "var(--font-cabin)", color: "var(--accent)" }}
             >
               {block.kicker}
             </p>
           )}
           {block.heading && (
             <h2
-              className="mb-6 text-3xl font-bold leading-tight text-white sm:text-4xl"
-              style={{ fontFamily: "var(--font-cabin)" }}
+              className="mb-6 text-3xl font-bold leading-tight sm:text-4xl"
+              style={{ fontFamily: "var(--font-cabin)", color: "var(--fg)" }}
             >
               {block.heading}
             </h2>
           )}
           <div className="space-y-5">
             {block.body.map((p, i) => (
-              <p key={i} className="text-lg leading-relaxed text-white/75">
+              <p key={i} className="text-lg leading-relaxed" style={{ color: "var(--fg-muted)" }}>
                 {p}
               </p>
             ))}
@@ -42,13 +42,19 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
     case "pullquote":
       return (
         <Reveal className="mx-auto max-w-3xl px-6 py-16 text-center md:py-28">
-          <blockquote className="text-2xl font-medium italic leading-snug text-white sm:text-3xl md:text-4xl">
-            <span className="text-amber-400">“</span>
+          <blockquote
+            className="text-2xl font-medium italic leading-snug sm:text-3xl md:text-4xl"
+            style={{ color: "var(--fg)" }}
+          >
+            <span style={{ color: "var(--accent)" }}>“</span>
             {block.quote}
-            <span className="text-amber-400">”</span>
+            <span style={{ color: "var(--accent)" }}>”</span>
           </blockquote>
           {block.cite && (
-            <cite className="mt-6 block text-sm not-italic text-white/40">
+            <cite
+              className="mt-6 block text-sm not-italic"
+              style={{ color: "var(--fg-faint)" }}
+            >
               — {block.cite}
             </cite>
           )}
@@ -87,8 +93,8 @@ export function BlockRenderer({ block }: { block: StoryBlock }) {
         <Reveal className="mx-auto max-w-5xl px-6 py-20 md:py-28">
           {block.heading && (
             <h3
-              className="mb-14 text-center text-sm uppercase tracking-[0.3em] text-white/40"
-              style={{ fontFamily: "var(--font-cabin)" }}
+              className="mb-14 text-center text-sm uppercase tracking-[0.3em]"
+              style={{ fontFamily: "var(--font-cabin)", color: "var(--fg-faint)" }}
             >
               {block.heading}
             </h3>

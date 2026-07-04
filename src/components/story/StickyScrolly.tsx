@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 type Step = { label: string; big: string; body: string };
 
@@ -23,7 +22,10 @@ export function StickyScrolly({
   return (
     <section className="mx-auto w-full max-w-6xl px-4">
       {heading && (
-        <h3 className="mb-8 text-center text-sm uppercase tracking-[0.3em] text-white/40">
+        <h3
+          className="mb-8 text-center text-sm uppercase tracking-[0.3em]"
+          style={{ fontFamily: "var(--font-cabin)", color: "var(--fg-faint)" }}
+        >
           {heading}
         </h3>
       )}
@@ -32,7 +34,10 @@ export function StickyScrolly({
         <div className="hidden lg:block">
           <div className="sticky top-0 flex h-screen items-center justify-center">
             <div className="relative aspect-square w-full max-w-md">
-              <div className="absolute inset-0 rounded-full border border-white/10" />
+              <div
+                className="absolute inset-0 rounded-full border"
+                style={{ borderColor: "var(--border)" }}
+              />
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <motion.div
                   key={active}
@@ -42,14 +47,14 @@ export function StickyScrolly({
                   className="text-center"
                 >
                   <div
-                    className="text-xs uppercase tracking-widest text-amber-400"
-                    style={{ fontFamily: "var(--font-cabin)" }}
+                    className="text-xs uppercase tracking-widest"
+                    style={{ fontFamily: "var(--font-cabin)", color: "var(--accent)" }}
                   >
                     {steps[active]?.label}
                   </div>
                   <div
-                    className="mt-2 text-7xl font-bold tabular-nums text-white"
-                    style={{ fontFamily: "var(--font-cabin)" }}
+                    className="mt-2 text-7xl font-bold tabular-nums"
+                    style={{ fontFamily: "var(--font-cabin)", color: "var(--fg)" }}
                   >
                     {steps[active]?.big}
                   </div>
@@ -62,7 +67,7 @@ export function StickyScrolly({
                   cy="50"
                   r="49"
                   fill="none"
-                  stroke="rgb(251 191 36)"
+                  stroke="var(--accent)"
                   strokeWidth="0.5"
                   strokeDasharray={`${((active + 1) / steps.length) * 308} 308`}
                   className="transition-all duration-500"
@@ -115,23 +120,21 @@ function ScrollyStep({
       {/* Mobile: Kennzahl direkt anzeigen (keine Sticky-Grafik) */}
       <div className="lg:hidden">
         <div
-          className="text-xs uppercase tracking-widest text-amber-400"
-          style={{ fontFamily: "var(--font-cabin)" }}
+          className="text-xs uppercase tracking-widest"
+          style={{ fontFamily: "var(--font-cabin)", color: "var(--accent)" }}
         >
           {step.label}
         </div>
         <div
-          className="text-6xl font-bold tabular-nums text-white"
-          style={{ fontFamily: "var(--font-cabin)" }}
+          className="text-6xl font-bold tabular-nums"
+          style={{ fontFamily: "var(--font-cabin)", color: "var(--fg)" }}
         >
           {step.big}
         </div>
       </div>
       <p
-        className={cn(
-          "mt-4 max-w-md text-lg leading-relaxed transition-colors duration-500 lg:text-xl",
-          inView ? "text-white" : "text-white/40",
-        )}
+        className="mt-4 max-w-md text-lg leading-relaxed transition-colors duration-500 lg:text-xl"
+        style={{ color: inView ? "var(--fg)" : "var(--fg-faint)" }}
       >
         {step.body}
       </p>

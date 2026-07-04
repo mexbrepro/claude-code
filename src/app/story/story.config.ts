@@ -22,6 +22,8 @@
  * ────────────────────────────────────────────────────────────────────────
  */
 
+import type { PaletteKey } from "./palettes";
+
 export type StoryBlock =
   | { type: "prose"; kicker?: string; heading?: string; body: string[] }
   | { type: "pullquote"; quote: string; cite?: string }
@@ -34,7 +36,7 @@ export type Chapter = {
   id: string;        // eindeutige Kurz-ID, nur Kleinbuchstaben, für die Navigation
   nav: string;       // Beschriftung in der Kapitel-Navigation
   title: string;     // große Kapitelüberschrift
-  accent?: "amber" | "red" | "sky" | "emerald"; // Signalfarbe des Kapitels
+  palette: PaletteKey; // Stimmung des Kapitels — mal dunkel & satt, mal hell & pastellig
   blocks: StoryBlock[];
 };
 
@@ -55,7 +57,7 @@ export const story = {
       id: "prolog",
       nav: "Prolog",
       title: "Zwei Zehntelsekunden",
-      accent: "amber",
+      palette: "duskAmber",
       blocks: [
         {
           type: "prose",
@@ -78,7 +80,7 @@ export const story = {
       id: "chronik",
       nav: "Die Chronik",
       title: "Die Chronik der Sicherheit",
-      accent: "sky",
+      palette: "midnightTeal",
       blocks: [
         {
           type: "prose",
@@ -117,7 +119,7 @@ export const story = {
       id: "crashtest",
       nav: "Vorher/Nachher",
       title: "60 Jahre in einem Aufprall",
-      accent: "red",
+      palette: "crimsonDark",
       blocks: [
         {
           type: "prose",
@@ -144,7 +146,7 @@ export const story = {
       id: "handy",
       nav: "Das Handy",
       title: "Die Droge Nr. 1",
-      accent: "amber",
+      palette: "violetNight",
       blocks: [
         {
           type: "prose",
@@ -187,7 +189,7 @@ export const story = {
       id: "alkohol",
       nav: "Alkohol",
       title: "Der Rechenfehler",
-      accent: "emerald",
+      palette: "pastelMint",
       blocks: [
         {
           type: "prose",
@@ -217,7 +219,7 @@ export const story = {
       id: "epilog",
       nav: "Epilog",
       title: "Die nächste Sekunde gehört dir",
-      accent: "amber",
+      palette: "pastelDawn",
       blocks: [
         {
           type: "prose",

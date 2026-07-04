@@ -37,13 +37,16 @@ export function StatCounter({
   return (
     <div ref={ref} className="text-center">
       <div
-        className="text-5xl font-bold tabular-nums text-white sm:text-6xl md:text-7xl"
-        style={{ fontFamily: "var(--font-cabin)" }}
+        className="text-5xl font-bold tabular-nums sm:text-6xl md:text-7xl"
+        style={{ fontFamily: "var(--font-cabin)", color: "var(--fg)" }}
       >
         {formatted}
-        <span className="text-amber-400">{suffix}</span>
+        <span style={{ color: "var(--accent)" }}>{suffix}</span>
       </div>
-      <p className="mx-auto mt-3 max-w-[22ch] text-sm leading-snug text-white/60">
+      <p
+        className="mx-auto mt-3 max-w-[22ch] text-sm leading-snug"
+        style={{ color: "var(--fg-muted)" }}
+      >
         {label}
       </p>
     </div>

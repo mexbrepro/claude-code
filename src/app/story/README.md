@@ -33,6 +33,26 @@ In `story.config.ts` besteht jedes Kapitel aus „blocks“. Diese Typen gibt es
 
 Ihr könnt Bausteine beliebig anordnen, kopieren oder weglassen.
 
+## Die Stimmung eines Kapitels (Farbpalette)
+
+Jedes Kapitel bekommt in `story.config.ts` eine `palette` — mal dunkel und
+satt für intensive Themen, mal hell und pastellig für ruhigere, reflektierende
+Momente:
+
+| Palette | Wirkung | Bisher verwendet für |
+|---|---|---|
+| `duskAmber` | Schwarz, warmes Amber | Prolog |
+| `midnightTeal` | Dunkles Petrol/Türkis | Die Chronik |
+| `crimsonDark` | Dunkles Rot | Crashtest |
+| `violetNight` | Dunkles Violett | Das Handy |
+| `pastelMint` | Helles Mintgrün | Alkohol |
+| `pastelDawn` | Helles Warmbeige | Epilog |
+
+Ändert einfach den Wert von `palette: "..."` bei einem Kapitel, um die
+Stimmung zu wechseln — der Rest (Text, Kontrast, Akzentfarbe) passt sich
+automatisch an. Alle Paletten sind in `palettes.ts` definiert; dort könnt ihr
+auch neue hinzufügen, wenn ihr eine eigene Farbwelt für ein Kapitel wollt.
+
 ## Knight-Lab-Tools einbinden
 
 1. Baut euer Tool auf der jeweiligen Website:

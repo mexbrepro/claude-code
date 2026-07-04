@@ -50,8 +50,12 @@ export function EmbedFrame({
     <Reveal className="mx-auto w-full max-w-5xl px-4">
       <figure>
         <div
-          className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/40"
-          style={{ height: `${heightVh}vh` }}
+          className="overflow-hidden rounded-2xl border shadow-2xl shadow-black/40"
+          style={{
+            height: `${heightVh}vh`,
+            borderColor: "var(--border)",
+            background: "var(--surface)",
+          }}
         >
           {src ? (
             <iframe
@@ -65,26 +69,36 @@ export function EmbedFrame({
           ) : (
             <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
               <span
-                className="rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-xs uppercase tracking-widest text-amber-300"
-                style={{ fontFamily: "var(--font-cabin)" }}
+                className="rounded-full border px-3 py-1 text-xs uppercase tracking-widest"
+                style={{
+                  fontFamily: "var(--font-cabin)",
+                  borderColor: "var(--accent-soft)",
+                  background: "var(--accent-soft)",
+                  color: "var(--accent)",
+                }}
               >
                 {info.name} · noch einzubetten
               </span>
-              <p className="max-w-md text-sm text-white/60">{info.how}</p>
+              <p className="max-w-md text-sm" style={{ color: "var(--fg-muted)" }}>
+                {info.how}
+              </p>
               {info.url && (
-                <p className="text-xs text-white/40">
-                  Werkzeug: <span className="text-white/70">{info.url}</span>
+                <p className="text-xs" style={{ color: "var(--fg-faint)" }}>
+                  Werkzeug: <span style={{ color: "var(--fg-muted)" }}>{info.url}</span>
                 </p>
               )}
-              <p className="max-w-md text-xs text-white/40">
-                Dann in <code className="text-white/60">story.config.ts</code> die
-                Zeile <code className="text-white/60">src: &quot;&quot;</code> mit
+              <p className="max-w-md text-xs" style={{ color: "var(--fg-faint)" }}>
+                Dann in <code style={{ color: "var(--fg-muted)" }}>story.config.ts</code> die
+                Zeile <code style={{ color: "var(--fg-muted)" }}>src: &quot;&quot;</code> mit
                 der Embed-URL füllen.
               </p>
             </div>
           )}
         </div>
-        <figcaption className="mx-auto mt-3 max-w-2xl text-center text-xs text-white/40">
+        <figcaption
+          className="mx-auto mt-3 max-w-2xl text-center text-xs"
+          style={{ color: "var(--fg-faint)" }}
+        >
           {title}
           {note ? ` — ${note}` : ""}
         </figcaption>

@@ -1,15 +1,9 @@
 import { story } from "./story.config";
+import { paletteVars } from "./palettes";
 import { Hero } from "@/components/story/Hero";
 import { ReadingProgress } from "@/components/story/ReadingProgress";
 import { ChapterNav } from "@/components/story/ChapterNav";
 import { BlockRenderer } from "@/components/story/Blocks";
-
-const ACCENT_LINE: Record<string, string> = {
-  amber: "from-amber-400/60",
-  red: "from-red-500/60",
-  sky: "from-sky-400/60",
-  emerald: "from-emerald-400/60",
-};
 
 /**
  * Die zusammengesetzte Story. Diese Datei muss beim Schreiben der Inhalte
@@ -35,18 +29,20 @@ export default function StoryPage() {
         <section
           key={chapter.id}
           id={chapter.id}
-          className="relative scroll-mt-0 border-t border-white/5"
+          className="relative scroll-mt-0 border-t"
+          style={{ ...paletteVars(chapter.palette), borderColor: "var(--border)" }}
         >
           {/* Kapitel-Titelzeile */}
           <div className="mx-auto max-w-2xl px-6 pt-20 md:pt-28">
             <div
-              className={`h-px w-16 bg-gradient-to-r to-transparent ${
-                ACCENT_LINE[chapter.accent ?? "amber"]
-              }`}
+              className="h-px w-16"
+              style={{
+                background: `linear-gradient(to right, var(--accent), transparent)`,
+              }}
             />
             <h2
-              className="mt-6 text-4xl font-bold leading-tight text-white sm:text-5xl"
-              style={{ fontFamily: "var(--font-cabin)" }}
+              className="mt-6 text-4xl font-bold leading-tight sm:text-5xl"
+              style={{ fontFamily: "var(--font-cabin)", color: "var(--fg)" }}
             >
               {chapter.title}
             </h2>

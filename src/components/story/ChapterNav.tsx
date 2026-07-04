@@ -31,7 +31,7 @@ export function ChapterNav({ chapters }: { chapters: NavItem[] }) {
   return (
     <nav
       aria-label="Kapitel"
-      className="pointer-events-none fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3 lg:flex"
+      className="pointer-events-none fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3 rounded-full border border-white/10 bg-neutral-950/85 px-3 py-4 shadow-lg shadow-black/30 backdrop-blur-md lg:flex"
     >
       {chapters.map((c) => (
         <a
