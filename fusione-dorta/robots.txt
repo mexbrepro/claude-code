@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fusionedorta.it/sitemap.xml
